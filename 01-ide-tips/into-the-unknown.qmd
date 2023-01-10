@@ -1,0 +1,225 @@
+---
+title: "Road Less Traveled `r emo::ji('national park')` `r emo::ji('person mountain biking')`"
+subtitle: "Productive RStudio IDE features you may not know"
+format: html
+editor_options: 
+  chunk_output_type: console
+bibliography: references.bib
+---
+
+...and some you will
+
+```{r}
+#| echo: true
+#| warning: false
+#| error: false
+
+# to install the emo package, first install the devtools package,
+# then install emo from github with: devtools::install_github("hadley/emo")
+
+library(emo)
+library(tidyverse)
+
+```
+
+<br>
+
+::: callout-note
+I am on a MacBook so `cmd` = command key. If you are on a Windows machine, use `ctl` instead
+:::
+
+<br>
+
+## `r emo::ji("red heart")` Jeremy's personal favorites
+
+### Output to where?
+
+I like it to go to the console
+
+-   `r emo::ji("gear")` -\> *Chunk Output in Console*
+
+### Console is where?
+
+I move my console to the top right quadrant: *Tools*-\>*Global Options*-\>*Pane Layout*
+
+### Function bodies
+
+-   F2 or `cmd+click` the function name to expose function body\
+-   Don't forget to select a method in the drop down if you can
+-   F1 the function name for help
+-   My favs because I learn best by seeing what others are already doing `r emo::ji("brain")`
+
+```{r}
+#| echo: true
+#| eval: true
+#| warning: false
+#| error: false
+
+emo::ji("red heart")
+
+dat <- tibble::as_tibble(diamonds) 
+
+```
+
+### View the data in a tab
+
+-   `cmd+click` the tibble name
+-   search whole table
+-   filter columns
+
+<br>
+
+## `r emo::ji("compass")` Getting around
+
+### Command Palette
+
+It's not unknown, but it's so productive I cannot not mention it
+
+-   `shift+cmd+p`
+-   once in there, type Global Options and return
+-   explore Global Options
+    -   keybindings, vim anyone?
+    -   relative line numbers
+    -   highlight function calls (toggle in Command Palette)
+
+### Outline is not out of line
+
+-   `ctl+shift+o` to navigate your document with the outline on the right
+-   Also access outline and functions at the bottom of the doc
+
+### Death by a thousand tabs
+
+-   *Go to file/function window* - find function grow_city()
+-   `ctl+.` to search file tabs
+
+### It's ok to cheat - I don't believe they've been here all along
+
+-   *Help* -\> *Cheat Sheets*
+-   What? There's one for the IDE? `r emo::ji("face with monocle")`
+
+<br>
+
+## `r emo::ji("computer")` Code mode
+
+### Editor fun
+
+-   `shift+ctl+c` to comment all highlighted lines
+-   `alt+up` or `alt+down` to move lines
+-   `ctl+alt+down` or `ctl+alt+up` or `alt+drag` to have multi-line cursor
+-   `cmd+i` to fix indention in highlighted code
+-   `cmd+shift+m` to insert pipe, but which pipe? See `shift+cmd+p`
+-   in the console, what does `up` do? what about `cmd+up`?
+-   double-click parentheses to highlight contents
+
+```{r}
+#| echo: true
+#| eval: true
+#| warning: false
+#| error: false
+
+dat |>
+  ggplot2::ggplot(aes(x = carat, y = price, color = cut)) +
+  geom_point(alpha = .3) +
+  labs(
+    title = "Diamonds: Price as a Function of Carat",
+    subtitle = "by cut",
+    x = NULL,
+    y = NULL
+  ) +
+  theme_minimal()
+
+```
+
+### Snippets
+
+-   `shift+tab` to expand a snippet
+-   type fun then `shift+tab`
+-   don't stop now, do `if` and `for` as well
+-   shinyapp then `shift+tab`
+
+```{r}
+#| echo: true
+#| eval: false
+#| warning: false
+#| error: false
+
+fun
+
+if
+
+for
+
+shinyapp
+
+```
+
+-   *Tools* -\> *Edit Code Snippets* to see them all and make your own
+
+<br>
+
+## `r emo::ji("hospital")` Search and Rescue
+
+-   find and replace across files
+-   `shift+cmd+f` and search for good_pets, then replace
+-   but wait, we didn't search .qmd files, so use custom filter
+
+<br>
+
+## `r emo::ji("chains")` Connections
+
+### The IDE installs Posit's pro drivers for you
+
+In the Connections pane
+
+-   click *New Connection*
+-   chose a driver
+-   the IDE installs it before helping you start the connection
+-   if the install fails, update packages and try again `r emo::ji("plug")`
+
+<br>
+
+## `r emo::ji("beetle")` Bugs
+
+### Breakpoints and browser()
+
+Let's jump over to the `my_func.R` file for this piece
+
+-   step through the body of a function
+-   see variable values along the way
+-   choose which environment to see
+
+<br>
+
+## `r emo::ji("button")` Visual editor
+
+-   normal doc styling features
+
+-   insert links, pics, tables, citations, footnotes, and more
+
+-   Here are two citations [@Little2020; @Melnychuk2017]; and a reference section will be added to the doc
+
+-   add more here: [@Welcomme2010; @Teh2017]
+
+<br>
+
+## `r emo::ji("package")` Advanced
+
+Require writing packages
+
+### Addins
+
+[RStudio Addins](https://docs.posit.co/ide/user/ide/guide/productivity/add-ins.html)
+
+### Templates
+
+[Project Teamplates](https://docs.posit.co/ide/user/ide/guide/productivity/project-templates.html)
+
+<br> <br>
+
+## So Much More
+
+### Have you tried background jobs yet?
+
+Tip: you can activate one from inside an R file - *Source* -\> *Source as Background Job*
+
+[RStudio User Guide!](https://docs.posit.co/ide/user/)

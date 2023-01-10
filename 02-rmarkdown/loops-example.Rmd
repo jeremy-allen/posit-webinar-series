@@ -1,0 +1,56 @@
+---
+output: html_document
+---
+
+  
+```{r penguin function, echo=FALSE, message=FALSE}
+
+library(dplyr)
+library(ggplot2)
+library(palmerpenguins)
+library(glue)
+
+penguins <- palmerpenguins::penguins
+
+multiplot <- function(penguin_name){
+	
+  cat(glue::glue("  \n### {penguin_name}  \n  \n"))
+	
+  df_pen <- penguins %>% 
+    filter(as.character(species) == penguin_name) %>% 
+    na.omit()
+  
+  flipper_len <- df_pen %>% 
+    summarize(mean = mean(flipper_length_mm)) %>% 
+    pull(mean) %>% 
+    round(digits = 1)
+  
+  bill_len <- df_pen %>% 
+    summarize(mean = mean(bill_length_mm)) %>% 
+    pull(mean) %>% 
+    round(digits = 1)
+  
+  cat(
+    glue::glue("There are {nrow(df_pen)} observations of {penguin_name} penguins. The average flipper length is {flipper_len} and the average bill length is {bill_len}.  \n")
+  )
+  
+  plot_out <- df_pen %>% 
+    ggplot(aes(x = bill_length_mm, y = flipper_length_mm)) +
+    geom_point() +
+    labs(x = "Bill Length", y = "Flipper Length", title = penguin_name)
+  
+  print(plot_out)
+  
+  cat("  \n  \n")
+}
+```
+
+```{r loop output,fig.width=6,echo=FALSE,message=FALSE,results="asis"}
+
+purrr::walk(unique(as.character(penguins$species)), multiplot)
+
+```
+
+<br>
+
+<https://git.io/JJBcC>
