@@ -223,3 +223,7 @@ Require writing packages
 Tip: you can activate one from inside an R file - *Source* -\> *Source as Background Job*
 
 [RStudio User Guide!](https://docs.posit.co/ide/user/)
+
+<br>
+
+[code](https://github.com/jeremy-allen/posit-webinar-series)
