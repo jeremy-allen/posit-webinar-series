@@ -7,6 +7,7 @@ output:
     toc: true
 params:
   date: !r Sys.Date()
+bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -90,15 +91,15 @@ Literate programming in R Markdown is not just for R. knitr, which computes code
 
 R Markdown can be a meta-document that lets you bring in other code or automate processes.
 
-- Automation with parameters: such as run a report for state, region, or body of water
-- Child Documents: in once document include the content from another .Rmd
-- Conditional child docs, [see guide](https://bookdown.org/yihui/rmarkdown-cookbook/child-document.html#child-document)
-- ETL in .Rmd, especially when scheduled in Posit Connect
-- RMarkdown for Emails, see [the blastula package](https://github.com/rstudio/blastula)
+-   Automation with parameters: such as run a report for state, region, or body of water
+-   Child Documents: in once document include the content from another .Rmd
+-   Conditional child docs, [see guide](https://bookdown.org/yihui/rmarkdown-cookbook/child-document.html#child-document)
+-   ETL in .Rmd, especially when scheduled in Posit Connect
+-   RMarkdown for Emails, see [the blastula package](https://github.com/rstudio/blastula)
 
 Let's add content from a child document right here (set eval to TRUE):
 
-<br> 
+<br>
 
 ```{r, child=c('loops-example.Rmd'), eval=FALSE}
 
@@ -112,21 +113,21 @@ Let's add content from a child document right here (set eval to TRUE):
 
 Templating through R Markdown templates:
 
-- standard report layouts
-- standard themes
-- directories
-- load standard libraries
-- share through packages
-- see [more in the guide](https://bookdown.org/yihui/rmarkdown/document-templates.html)
+-   standard report layouts
+-   standard themes
+-   directories
+-   load standard libraries
+-   share through packages
+-   see [more in the guide](https://bookdown.org/yihui/rmarkdown/document-templates.html)
 
 Templating through parameters:
 
-- Today is `r params$date`
-- see [more in the guide](https://bookdown.org/yihui/rmarkdown/document-templates.html)
+-   Today is `r params$date`
+-   see [more in the cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/parameterized-reports.html#parameterized-reports)
 
 Templating through code loops
 
-- knit the doc loops-example.Rmd
+-   knit the doc loops-example.Rmd
 
 <br>
 
@@ -171,7 +172,7 @@ Templating through code loops
 
     -   what parameters are you already using?
 
--   ?
+-   Remember citations ? [@Welcomme2010]
 
 **Here are four incredible resources on the nuts and bolts**
 
@@ -196,6 +197,5 @@ Templating through code loops
 <br>
 
 ## Q&A
-
 
 [code](https://github.com/jeremy-allen/posit-webinar-series)
