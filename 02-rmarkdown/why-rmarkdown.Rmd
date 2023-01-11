@@ -63,6 +63,7 @@ library(tidyverse)
 ```
 
 ```{r}
+
 diamonds |>
 	ggplot2::ggplot(aes(x = carat, y = price, color = cut)) +
 	geom_point(alpha = .3) +
