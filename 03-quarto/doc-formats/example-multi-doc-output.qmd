@@ -1,0 +1,61 @@
+---
+title: Output to multiple doc formats
+subtitle: Like HTML and Word and PDF
+author:
+  - name: Katy Perry
+    email: hi@gates.com
+    affiliations:
+      - name: Music Hall of Fame
+        address: 123 Street North
+        city: Seattle
+        state: WA
+        postal-code: 98109
+  - name: Jeremy Allen
+    email: bye@gates.com
+    affiliations:
+      - name: Posit Records
+        state: Georgia
+date: 2026-02-14
+abstract: "This publication is NOT the annual National Marine Fisheries Service (NMFS) yearbook of fishery statistics for the United States for 2020. It's a grab-bag of pieces put together for demo purposes only. The report provides, maybe, data on U.S. recreational catch and commercial fisheries landings and value as well as other aspects of U.S. commercial fishing. In addition, data are reported on the U.S. fishery processing industry, imports and exports of fishery-related products, and domestic supply and per capita consumption of fishery products."
+abstract-title: Executive Summary
+toc: true
+format:
+  html: 
+    title-block-style: default
+  docx:
+    toc-title: Contents
+    highlight-style: github
+  plos-pdf:
+    keep-tex: false
+    output-file: plos_style_ouput
+    output-ext: pdf
+bibliography: references.bib
+---
+
+# 2020 FISHERIES OF THE UNITED STATES
+
+## Status of Stocks - how to get rich quick
+
+Status of Stocks is an annual report to Congress on the status of U.S. fisheries and is required by the Magnuson-Stevens Fishery Conservation and Management Act.[^1] This report, which is published each spring, summarizes the number of stocks on the overfished, overfishing, and rebuilt lists for U.S. federally managed fish stocks and stock complexes. The report also shows trends over time, discusses the value and contributions of our partners, and highlights how management actions taken by NOAA Fisheries have improved the status of U.S. federally managed stocks.
+
+[^1]: The real report is here https://www.fisheries.noaa.gov/resource/document/fisheries-united-states-2020, but I copied and jumbled a lot of the text and graphics for demo purposes.
+
+![Fish Stocks](images/fish.png){width="80%"}
+
+## Fisheries of the United States
+
+Fisheries of the United States, published each fall, has been produced in its various forms for more than 100 years. It is the NOAA Fisheries yearbook of fishery statistics for the United States. It provides a snapshot of data, primarily at the national level, on U.S. recreational catch and commercial fisheries landings and value. In addition, data are reported on U.S. aquaculture production, the U.S. seafood processing industry, imports and exports of fishery-related products, and domestic supply and per capita consumption of fishery products [@Menon2022a].
+
+![Map](images/map.png){width="80%"}
+
+## U.S. Marine Recreational Fisheries
+
+NOAA Fisheries' Marine Recreational Information Program (MRIP) is the state-regional federal partnership that develops, improves, and implements a national network of surveys to estimate how many fish anglers catch and how many trips they take [@Smith2019; @Garcia2005]. It provides a snapshot of data, primarily at the national level, on U.S. recreational catch and commercial fisheries landings and value. In addition, data are reported on U.S. aquaculture production, the U.S. seafood processing industry, imports and exports of fishery-related products, and domestic supply and per capita consumption of fishery products [@Menon2022a]. The report also shows trends over time, discusses the value and contributions of our partners, and highlights how management actions taken by NOAA Fisheries have improved the status of U.S. federally managed stocks[^2].
+
+[^2]: hey we just added this footnote during the presentation
+
+## Acknowledgments {.appendix}
+
+I am grateful for the insightful comments offered by the anonymous peer reviewers at Books & Texts. The generosity and expertise of one and all have improved this study in innumerable ways and saved me from many errors; those that inevitably remain are entirely my own responsibility.
+
+### References {.appendix}

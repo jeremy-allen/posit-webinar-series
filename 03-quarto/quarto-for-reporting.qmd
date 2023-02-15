@@ -1,0 +1,376 @@
+---
+format: 
+  revealjs:
+    overview: true
+    # include-in-header: preview.html
+    hash-type: number
+    transition: fade
+    auto-stretch: false
+    # embed-resources: true
+    height: 900
+    width: 1600
+    logo: https://www.rstudio.com/assets/img/posit-logo-fullcolor-TM.svg
+    footer: <a href="https://github.com/jeremy-allen/posit-webinar-series">jeremy-allen/posit-webinar-series</a> by [@jeremy_data@fosstodon.org](https://fosstodon.org/@jeremy_data)
+    slide-number: c/t
+    theme: [styles.scss]
+engine: knitr
+---
+
+##  {#TitleSlide data-menu-title="TitleSlide" background-color="#303436" background-image="images/quarto-hamlet-1.jpeg" background-position="left" background-size="contain"}
+
+::: {style="position: absolute; left: 25%; top: 25%; height: 50%; width: 80%; background-color: #447099; padding: 1.5rem; padding-right: 10rem; box-shadow: 10px 10px 0px 0px #EE6331; border-radius: 5px;"}
+[Quarto for Reproducible Publications]{style="font-size: 5rem; font-weight: bold; line-height: 5rem; margin: 0px"}
+
+<br>
+
+<div><div style="vertical-align: top; display: inline-block; font-size: 3rem; font-weight: light;">Jeremy Allen&nbsp;</div><img src="https://www.rstudio.com/assets/img/posit-logo-white-TM.svg" width=180px style="vertical-align: top; display: inline-block;"></img></div>
+
+</a>&nbsp;<a href="https://colorado.posit.co/rsc/quarto-reporting/" style="font-size: 2rem; font-weight: light; font-color: white; color: #f5f5f5;">These Slides!</a>
+
+[2023-02-14]{style="font-size: 2rem;font-weight: light;"}
+:::
+
+::: footer
+[You are sneaky!]{style="color: transparent;"}
+:::
+
+## So what is Quarto? {background-color="#303436"}
+
+:::{.incremental}
+- Quarto® is an open-source scientific and technical publishing system built on Pandoc
+- Batteries included, shared syntax across output types and languages
+- Choose your own editor and your preferred data science language
+- RMarkdown still maintained, but majority of new features built into Quarto
+:::
+
+## So what is Quarto?
+
+`quarto` is a language agnostic command line interface (CLI)
+
+<br>
+
+```bash
+jeremyallen$ quarto --help
+```
+
+. . .
+
+```{bash}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "|15|16|25"
+
+  Usage:   quarto 
+  Version: 1.3.197
+
+  Description:
+
+    Quarto CLI
+
+  Options:
+
+    -h, --help     - Show this help.                            
+    -V, --version  - Show the version number for this program.  
+
+  Commands:
+
+    render          [input] [args...]     - Render files or projects to various document types.        
+    preview         [file] [args...]      - Render and preview a document or website project.          
+    serve           [input]               - Serve a Shiny interactive document.                        
+    create          [type] [commands...]  - Create a Quarto project or extension                       
+    create-project  [dir]                 - Create a project for rendering multiple documents          
+    convert         <input>               - Convert documents to alternate representations.            
+    pandoc          [args...]             - Run the version of Pandoc embedded within Quarto.          
+    run             [script] [args...]    - Run a TypeScript, R, Python, or Lua script.                
+    add             <extension>           - Add an extension to this folder or project                 
+    install         [target...]           - Installs an extension or global dependency.                
+    publish         [provider] [path]     - Publish a document or project. Available providers include:
+    check           [target]              - Verify correct functioning of Quarto installation.         
+    help            [command]             - Show this help or the help of a sub-command.         
+```
+
+## RMarkdown for literate programming {background-image="images/rmd-knitr.jpg" background-size="85%" background-position="center" fig-alt="diagram of converting a Rmarkdown document via knitr/pandoc into markdown and then into output formats"}
+
+## Quarto for literate programming
+
+<image src="images/qmd-knitr.jpg" style="position: absolute; top: 220px; left: 50px;" width="1800px" alt="diagram of converting a Qmd document via knitr/pandoc into markdown and then into output formats"></image>
+
+. . .
+
+::: {style="position: absolute; top: 430px; left: 50px; width: 175px; height: 100px; background-color: #fa551b35; z-index: -1;"}
+:::
+
+. . .
+
+::: {style="position: absolute; top: 405px; left: 800px; width: 300px; height: 150px; background-color: #fa551b35; z-index: -1;"}
+:::
+
+## Quarto for literate programming
+
+::: r-stack
+
+![](images/qmd-jupyter.jpg){.fragment width="1800" fig-alt="diagram of converting a Quarto document via Jupyter/pandoc into markdown and then into output formats"}
+
+![](images/jupyter-alone.jpg){.fragment width="1800" fig-alt="diagram of converting a Jupyter notebook via pandoc into markdown and then into output formats"}
+:::
+
+## What does Quarto look like in the RStudio IDE?
+
+## Quarto - Visual Editor
+
+![](https://quarto.org/docs/visual-editor/images/visual-editing-toolbar.png){fig-alt="A snippet of an RStudio window showing the options bar at the top of an RMarkdown document."}
+
+| Format                                                                                                                                                                       | Insert                                                                                                                                                                       | Table                                                                                                                                                                     |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ![](https://quarto.org/docs/visual-editor/images/visual-editing-format-menu.png){fig-alt="The contents of the Format drop down menu."} | ![](https://quarto.org/docs/visual-editor/images/visual-editing-insert-menu.png){fig0alt="The contents of the Insert drop down menu."} | ![](https://quarto.org/docs/visual-editor/images/visual-editing-table-menu.png){fig-alt="The contents of the Table drop down menu."} |
+
+## Static documents
+
+-   A static document is your "daily driver" - has the power for a complex table of contents, figure alignment, control of ouptut/code, and other niceties
+-   Useful as a lab notebook, scratchpad, or the final output for your team
+- Most powerful as the combination of written thoughts and observations along with source code
+
+## Parameters
+
+You may have a set of parameters that are used to create different variations of a report. For example:
+
+:::{.incremental}
+-   Showing results for a specific geographic location.
+-   Running a report that covers a specific time period.
+-   Running a single analysis multiple times for different assumptions.
+:::
+
+## Parameters
+
+::: columns
+::: {.column .fragment width="45%"}
+**Python** - Papermill style<br>
+
+``` {{python}}
+#| tags: [parameters]
+alpha = 0.1
+ratio = 0.1
+```
+:::
+
+::: {.column .fragment width="40%"}
+<br>
+
+``` {{python}}
+str(alpha)
+```
+:::
+:::
+
+. . .
+
+::: columns
+::: {.column width="45%"}
+**R** - YAML style<br>
+
+    ---
+    title: "My Document"
+    params:
+      alpha: 0.1
+      ratio: 0.1
+    ---
+:::
+
+::: {.column .fragment width="40%"}
+<br>
+
+``` {{r}}
+str(params$alpha)
+```
+:::
+:::
+
+. . .
+
+**CLI/Terminal**
+
+``` bash
+quarto render doc.qmd -P alpha:0.2 -P ratio:0.3
+```
+## Render with Parameters
+
+::: columns
+::: {.column .fragment width="52%"}
+``` yaml
+---
+title: "Penguins"
+date: today
+format: html
+params:
+  species: Adelie
+---
+```
+
+```` markdown
+```{{r}}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(palmerpenguins)
+penguin_filter <- penguins |>
+  filter(species == params$species,
+    !is.na(body_mass_g))
+diff_rows <- nrow(penguins) - nrow(penguin_filter)
+```
+````
+
+``` markdown
+We have data about `r knitr::inline_expr("nrow(penguins)")` penguins. Only
+`r knitr::inline_expr("diff_rows")` are classified as `r knitr::inline_expr("params$species")`. 
+The distribution of the `r knitr::inline_expr("params$species")` penguins 
+are shown below:
+```
+
+```` code
+```{{r}}
+#| echo: false
+penguin_filter |>
+  ggplot(aes(body_mass_g)) +
+  geom_histogram(binwidth = 100)
+```
+````
+:::
+
+::: {.column .fragment width="44%"}
+![](images/penguin-report.png){fig-alt="A screenshot of the output report, displaying the title, date, information about the penguins and a basic histogram."}
+:::
+:::
+
+## Render with Parameters
+
+``` bash
+quarto render penguin-report.qmd -P species:Gentoo --output gentoo-report.html
+quarto render penguin-report.ipynb -P species:Gentoo --output gentoo-report.html
+```
+
+. . .
+
+```{r}
+#| eval: false
+#| echo: true
+render_fun <- function(penguin){
+  quarto::quarto_render(
+    input = "penguin-report.qmd",
+    execute_params = list(species = penguin),
+    output_file = glue::glue("{penguin}-report.html")
+  )
+}
+unique(penguins$species) |>
+  as.character() |> 
+  purrr::walk(render_fun)
+```
+
+. . .
+
+``` code
+Output created: Adelie-report.html
+Output created: Chinstrap-report.html
+Output created: Gentoo-report.html
+```
+
+## PDF Articles
+
+``` yaml
+format:
+  pdf:
+    template: mytemplate.tex
+```
+
+. . .
+
+<br>
+
+See more on Journal Articles at <https://github.com/quarto-journals/>
+
+::: columns
+::: {.column .fragment width="35%"}
+
+``` yaml
+---
+title: "My Document"
+toc: true
+format:
+   acm-pdf: default
+   acm-html: default
+---
+```
+:::
+
+::: {.column .fragment width="60%"}
+![](images/jss.png){fig-alt="Screenshot of a rendered Quarto document to the Journal of Statistical Science format."}
+:::
+:::
+
+## 
+
+[Take 5!]{style="font-size: 8rem;font-weight: bold;"}
+
+<br>
+
+[Enjoy the music :)]{style="font-size: 4rem;font-weight: light;"}
+
+<br>
+
+[Then demo!]{style="font-size: 4rem;font-weight: light;"}
+
+## More PDF + LaTeX templates
+
+Great work from the NFMS Open Science team on "Quarto titlepages": <https://nmfs-opensci.github.io/quarto_titlepages/>
+
+> The tex templates were written by [Eli Holmes](https://github.com/eeholmes) and the lua filter along with changes to the Pandoc templates to allow themes was written by [Mickaël Canouil](https://github.com/mcanouil).
+. . .
+
+![](https://nmfs-opensci.github.io/quarto_titlepages/images/bg-image.png){fig-alt="A screenshot of the titlepages Quarto output PDF. It has a logo, along with the title information and the affiliations of the authors."}
+
+
+## Quarto resources
+
+- [Quarto.org](https://quarto.org/) for documentation or the [Quarto FAQ](https://quarto.org/docs/faq/)
+- ["With Quarto Coming, is R Markdown Going Away? No." - Yihui.org](https://yihui.org/en/2022/04/quarto-r-markdown/)
+- [Quarto for the Curious - 20 min video](https://www.rstudio.com/conference/2022/talks/quarto-for-rmarkdown-users/)
+- ['Welcome to Quarto' workshop - 120 min video](https://www.youtube.com/watch?v=yvi5uXQMvu4)
+- [Beautiful Reports and Presentations with Quarto - 60 min](https://www.youtube.com/watch?v=hbf7Ai3jnxY&t=751s)
+- [Building a blog with Quarto - 60 min](https://www.youtube.com/watch?v=CVcvXfRyfE0&t=3308s)
+
+### General Quarto
+
+- [Hello Quarto: Share • Collaborate • Teach • Reimagine - Conf Keynote, 60 min](https://www.rstudio.com/conference/2022/keynotes/collaborate-with-quarto/)
+- [Literate Programming With Jupyter Notebooks and Quarto - 20 min](https://www.rstudio.com/conference/2022/talks/literate-programming-quarto/)
+- [Websites & Books & Blogs, oh my! Creating Rich Content with Quarto](https://www.rstudio.com/conference/2022/talks/sessions/quarto-deep-dive/websites-books-blogs-quarto/)
+- [These are a few of my favorite things (about Quarto presentations)](https://www.rstudio.com/conference/2022/talks/my-favorite-things-quarto-presentations/)
+- [Quarto FAQ](https://quarto.org/docs/faq/)
+
+##
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+### Quarto Gallery
+
+Quarto can produce a wide variety of output formats. 
+
+Here are some examples:
+
+- [Articles & Reports](https://quarto.org/docs/gallery/#articles-reports)
+- [Presentations](https://quarto.org/docs/gallery/#presentations)
+- [Interactive Docs](https://quarto.org/docs/gallery/#interactive-docs)
+- [Websites](https://quarto.org/docs/gallery/#websites)
+- [Books](https://quarto.org/docs/gallery/#books)
+
+<https://quarto.org/docs/gallery/>
+
+:::
+
+::: {.column width="50%"}
+![](images/gallery.png)
+:::
+
+::::
+
+

@@ -1,0 +1,41 @@
+---
+title: Execution Control
+format: html
+execute: 
+  warning: false
+  error: false
+  echo: true
+  output: false
+---
+
+
+```{r}
+library(purrr)
+library(palmerpenguins)
+library(glue)
+library(quarto)
+library(here)
+```
+
+
+```{r}
+render_fun <- function(penguin){
+	
+	quarto::quarto_render(
+		input = here("03-quarto", "parameters-example", "penguin-report.qmd"),
+		execute_dir = here("03-quarto", "parameters-example"),
+		execute_params = list(species = penguin),
+		output_file = glue::glue("{penguin}-report.html")
+	)
+	
+}
+```
+
+
+```{r}
+unique(penguins$species) |>
+	as.character() |> 
+	purrr::walk(.f = render_fun)
+```
+
+

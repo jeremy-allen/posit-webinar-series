@@ -1,0 +1,13 @@
+name: quarto-for-reporting
+title: quarto-for-reporting
+username: jeremy.allen
+account: jeremy.allen
+server: colorado.posit.co
+hostUrl: https://colorado.posit.co/rsc/__api__
+appId: 14882
+bundleId: 69373
+url: https://colorado.posit.co/rsc/quarto-reporting/
+when: 1676392232.79296
+lastSyncTime: 1676392232.79297
+asMultiple: FALSE
+asStatic: TRUE

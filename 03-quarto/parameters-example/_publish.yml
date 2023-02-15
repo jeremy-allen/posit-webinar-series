@@ -1,0 +1,4 @@
+- source: penguin-report.qmd
+  connect:
+    - id: 19758001-d9cb-4f0e-af3a-8c20a5f181ce
+      url: 'https://colorado.posit.co/rsc/content/19758001-d9cb-4f0e-af3a-8c20a5f181ce/'
