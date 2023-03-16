@@ -1,0 +1,212 @@
+---
+format:
+  revealjs:
+    overview: TRUE
+    hash-type: number
+    transition: fade
+    auto-stretch: FALSE
+    height: 900
+    width: 1600
+    fig-width: 10
+    fig-height: 8
+    logo: "https://www.rstudio.com/assets/img/posit-logo-fullcolor-TM.svg"
+    footer: "<a href=\"https://colorado.posit.co/rsc/shiny-and-widgets/\">https://colorado.posit.co/rsc/shiny-and-widgets/</a>"
+    slide-number: c/t
+    theme: styles.scss
+    link-external-newwindow: TRUE 
+engine: knitr
+resource_files:
+- styles.scss
+- "images/shiny-cover.png"
+---
+
+```{r}
+#| echo: false
+#| include: false
+library(ggplot2)
+library(plotly)
+```
+
+
+##  {data-menu-title="TitleSlide" background-image="images/shiny-cover.png" background-position="left" background-size="35%" background-color="#333333" background-opacity="1"}
+
+::: {.title-box}
+::: {.title-text}
+Shiny and htmlwidgets
+:::
+Web apps and beautiful interactive widgets that can be built by data scientists and researchers
+:::
+
+::: {.footer}
+[You are sneaky!]{style="color: transparent;"}
+:::
+
+# Shiny and htmlwidgets
+
+:::{.nice-block}
+`shiny` is a framework for creating web apps in R and Python.
+:::
+
+. . .
+
+:::{.nice-block}
+`htmlwidgets` let you employ the most beautiful JavaScript dataviz libraries using R code.
+:::
+
+# Why Shiny and htmlwidgets? {background-color="#333333"}
+
+:::{.nice-block}
+`shiny` is designed for data scientists and researchers, allowing you to create great apps with little or no knowledge of HTML, CSS, or JavaScript.
+:::
+
+. . .
+
+:::{.nice-block}
+`htmlwidgets` is a free pass to get beautiful interactive visualizations from the JavaScript ecosystem, using only R.
+:::
+
+# Shiny considerations
+
+:::{.incremental}
+
+- What do I know that other people need to know?
+- What can I do that other people need help doing?
+- Can I and should I communicate that or do that in a Shiny app?
+- **Careful! If you create it you have to keep it alive!**
+- Not quite, if it's not used by anyone, let it die!
+
+:::
+
+# What makes a Shiny app?
+
+:::{.fragment .fade-in-then-semi-out}
+Story
+:::
+
+:::{.fragment .fade-in-then-semi-out}
+Design
+:::
+
+:::{.fragment .fade-in}
+User Interface
+
+  - HTML content
+  - Control Widgets that take user input
+  - Display reactive outputs
+
+:::
+
+:::{.fragment .fade-in}
+Server
+
+  - [Reactive programming](https://mastering-shiny.org/basic-reactivity.html) - when an input changes, all related outputs automatically update
+  - Receive user input
+  - Calculate
+  - Update outputs for the UI
+  - Session Data
+
+:::
+
+# Take 5, then Demo!
+
+:::{.nice-block}
+With a deep dive on [Shiny scoping rules](https://shiny.rstudio.com/articles/scoping.html) and why they matter for performance
+:::
+
+:::{.nice-block}
+Demo app at [https://colorado.posit.co/rsc/shiny-scoping-and-runtime/](https://colorado.posit.co/rsc/shiny-scoping-and-runtime/)
+:::
+
+## Better plotly
+
+We saw a bit of the `plotly` htmlwidget in the demo using `ggplotly()` and it's limitations, but here is a better example with the `plot_ly()` function
+
+##
+
+add subtitles and captions with `annotations`
+
+```{r}
+#| echo: true
+#| include: true
+#| output-location: slide
+
+d <- diamonds[sample(nrow(diamonds), 300), ]
+
+my_title_font <- list(
+  color = "#447099",
+  size = 30
+)
+
+my_caption_font <- list(
+  color = "#447099",
+  size = 20
+)
+
+my_margin <- list(
+    l = 10,
+    r = 10,
+    b = 80,
+    t = 20
+  )
+
+plot_ly(d, x = d$carat, y = d$price, 
+        text = paste("Clarity: ", d$clarity),
+        mode = "markers", color = d$carat, size = d$carat,
+        width = 1500, height = 800) |> 
+  layout(
+    title = list(text = 'Diamond Price by Clarity',font = my_title_font,
+                 y = 0.9, x = 0.25, xanchor = 'center', yanchor =  'top'),
+    annotations = list(
+      list(x = 1 , y = -.08, text = "here is my caption", font = my_caption_font,
+           xref='paper', yref='paper', showarrow = FALSE)
+    ),
+    margin = my_margin
+  )
+
+```
+
+
+# More htmlwidgets
+
+[https://www.htmlwidgets.org/index.html](https://www.htmlwidgets.org/index.html)
+
+:::{.nice-block}
+plotly, leaflet and DataTable are very popular
+:::
+
+# Further Shiny Considerations
+
+:::{.incremental}
+- [caching](https://shiny.rstudio.com/articles/caching.html)
+- [state bookmarking](https://shiny.rstudio.com/articles/bookmarking-state.html)
+- [profiling](https://shiny.rstudio.com/articles/profiling.html) and [testing](https://shiny.rstudio.com/articles/testing-overview.html)
+- [modules](https://shiny.rstudio.com/articles/modules.html)
+:::
+	
+## Resources
+
+- [7 lessons you can do this week to build your first Shiny app](https://shiny.rstudio.com/tutorial/written-tutorial/lesson1/)
+- [Shiny for R](https://shiny.rstudio.com/)
+- [Shiny for Python](https://shiny.rstudio.com/py/)
+- [Mastering Shiny](https://mastering-shiny.org/)
+- [htmlwidgest](https://www.htmlwidgets.org/)
+- [Posit](https://posit.co)
+- [Posit docs](https://docs.posit.co/)
+- [Posit Solutions](https://solutions.posit.co/)
+- [Public Sector Cheatsheet for all links in one place](https://colorado.posit.co/rsc/public-sector-cheatsheet/)
+
+## Some government public facing web apps built with Shiny:
+
+<br> 
+
+**Indiana**
+[Indiana Employer Connector](https://www.in.gov/gwc/cte/employer-connector/)
+
+**USGS**
+
+- [Bat Tool](https://rconnect.usgs.gov/battool/)
+- [Pennsylvania Drought Condition Monitoring ](https://rconnect.usgs.gov/PA_drought_map/)
+- [PopEquus (usgs.gov)](https://rconnect.usgs.gov/popequus/)
+
+**CALCAT**
+[California COVID Assessment Tool](https://calcat.covid19.ca.gov/cacovidmodels)
