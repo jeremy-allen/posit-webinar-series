@@ -1,0 +1,259 @@
+---
+title: "Pins Demo"
+author: "Jeremy Allen"
+output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
+  chunk_output_type: console
+---
+
+# Pins
+
+The pins package helps you publish data sets, models, and other R
+objects, making it easy to share them across projects and with your
+colleagues. The pin board can be on
+
+-   local or temp folder
+-   Shared folder (like Dropbox)
+-   RStudio Connect
+-   Amazon S3
+-   Azure storage
+-   Microsoft 365 (OneDrive and SharePoint) - Google Cloud
+
+![flow diagram for using Pins with RStudio
+Connect](example_pins_workflow.png)
+
+## I don't quite get the use case?
+
+A "yes" to any of these indicates a good use case for pins!
+
+-   Using read_csv() to bring in emailed data?
+-   Saving .Rds or .RData objects to be called later?
+-   Sharing your model or data across multiple apps?
+-   Redeploying your app every time the supporting data is updated?
+
+Now revisit that flow diagram then consider the examples below.
+
+```{r, eval=F, echo=T}
+
+library(pins)
+library(fs)
+
+```
+
+What version of pins are we using?
+
+```{r, eval=F, echo=T}
+
+packageVersion("pins")
+
+```
+
+## AWS S3 buckets as pin boards
+
+Note the use of environment variables for my key ID and key.
+
+#### Create the board
+
+```{r, eval=F, echo=T}
+
+# Amazon AWS S3 board
+
+bs3 <- board_s3(
+  Sys.getenv("AWS_BUCKET"),
+  prefix = "demo",
+  versioned = TRUE,
+  access_key = Sys.getenv("AWS_ACCESS_KEY_ID"),
+  secret_access_key = Sys.getenv("AWS_SECRET_ACESS_KEY"),
+  session_token = NULL,
+  credential_expiration = NULL,
+  profile = NULL,
+  region = Sys.getenv("AWS_REGION"),
+  endpoint = NULL,
+  cache = NULL
+)
+
+```
+
+#### What's already on the board in my S3 bucket
+
+```{r, eval=F, echo=T}
+
+# anything on there now?
+bs3 %>% pin_list()
+
+```
+
+#### What data sets come with R?
+
+```{r, eval=F, echo=T}
+
+data()
+
+```
+
+#### Write more to the board in my S3 bucket
+
+```{r, eval=F, echo=T}
+
+# write new data frame to the board in my S3 bucket
+bs3 %>% pin_write(Indometh) #insert name of data frame
+
+```
+
+pins wrote the data frame as an rds file
+
+#### Pause. Let's do the same for a local board
+
+creates a board in a system data directory. It's useful if you want to
+share pins between R sessions on your computer, and you don't care where
+the data lives.
+
+```{r, eval=F, echo=T}
+
+my_local_board <- board_local()
+my_local_board %>% pin_list()
+my_local_board %>% pin_delete("attitude")
+my_local_board %>% pin_list()
+my_local_board %>% pin_write(attitude) 
+my_local_board %>% pin_list()
+
+```
+
+#### And let's do the same for a folder board
+
+creates a board inside a folder. You can use this to share files by
+using a folder on a shared network drive or inside a DropBox.
+
+```{r, eval=F, echo=T}
+
+# if folder is not there it will be created
+my_proj_board <- board_folder(path = "project_board")
+
+my_proj_board %>% pin_list()
+my_proj_board %>% pin_delete("attitude")
+my_proj_board %>% pin_write(attitude) 
+my_proj_board %>% pin_list()
+
+```
+
+#### Let's look at the board in our project directory
+
+There's a .rds file and a text file. The text file contains metadata
+about the pinned object
+
+#### Interact with the pinned objects on boards
+
+```{r, eval=F, echo=T}
+
+bs3 %>% pin_list()
+
+bs3 %>% pin_read("islands")
+
+bs3 %>% pin_search(search = "CO2")
+
+bs3 %>% pin_delete("CO2")
+
+my_proj_board %>% pin_delete("attitude") 
+
+# add metadata to a pin
+my_proj_board %>% pin_write(attitude,
+                            "attitude",
+                            versioned = TRUE,
+                            description = "2007 data about bad cat attitudes", 
+                            metadata = list("year" = 2007,
+                                            "checked_by" = "Jeremy"))
+
+my_proj_board %>% pin_meta("attitude") 
+my_proj_board %>% pin_versions("attitude") 
+
+```
+
+## RStudio Connect as a board
+
+```{r, eval=F, echo=T}
+
+# RStudio Connect board
+
+# make sure package rsconnect is already installed
+# Connect boards are versioned by default
+brsc <- board_rsconnect() 
+brsc %>% pin_list() # grab a coffee while this runs
+
+brsc %>% pin_search(search = "codenames")
+
+cn <- brsc %>% pin_read(name = "katie.masiello/codenames")
+
+View(cn)
+
+```
+
+## Versioning
+
+board level or pin level
+
+```{r, eval=F, echo=T}
+
+# all pins on this board will be versioned
+my_version_board <- board_folder(path = "project_v_board",
+                              versioned = TRUE)
+
+my_version_board %>% pin_write(Seatbelts,
+                            versioned = TRUE)
+
+my_version_board %>% pin_list()
+
+my_version_board %>% pin_versions("Seatbelts")
+
+df_versioned <- my_version_board %>%
+  pin_read(
+    name = "Seatbelts",
+    version = "20220914T141335Z-08fde"
+  )
+
+```
+
+## Pin Models
+
+See [Bike Predict example
+project](https://solutions.rstudio.com/example/bike_predict/) to see how the vetiver package is used to pin a model to Posit Connect.  
+
+## Upload a file instead of pinning
+
+This is a lower-level interface than pin_read() and pin_write() that you
+can use to pin any file, as opposed to any R object. The path returned
+by pin_download() is a read-only path to a cached file: you should never
+attempt to modify this file.
+
+```{r, eval=F, echo=T}
+
+# upload file instead of pinning R objects
+
+my_proj_board %>% pin_upload(
+  paths = "msg.txt",
+  name = "message_in_bottle",
+  title = "Shared Bottle Message",
+  description = NULL,
+  metadata = NULL
+)
+
+
+my_proj_board %>% pin_list()
+
+# let's go to a new session and download that text file
+
+```
+
+## How to get started
+
+Katie's [great PDF
+guide](https://colorado.rstudio.com/rsc/protip-pins/protip_pins.pdf "Katie's getting started guide!")
+that lives on our public Connect.
+
+Katie's [great video demo](https://www.youtube.com/watch?v=3Yk6U_XqxNo),
+including versioning pins and models
+
+Our [Bike Prediction example
+project](https://solutions.rstudio.com/example/bike_predict/) with free
+code!
