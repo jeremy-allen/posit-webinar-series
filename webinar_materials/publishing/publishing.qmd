@@ -1,0 +1,239 @@
+---
+format: 
+  revealjs:
+    overview: true
+    hash-type: number
+    transition: fade
+    auto-stretch: false
+    height: 900
+    width: 1600
+    logo: https://www.rstudio.com/assets/img/posit-logo-fullcolor-TM.svg
+    footer: <a href="https://colorado.posit.co/rsc/posit-possible/">https://colorado.posit.co/rsc/posit-possible/</a>
+    slide-number: c/t
+    link-external-newwindow: true
+    theme: styles.scss
+engine: knitr
+---
+
+## {#TitleSlide data-menu-title="Title Slide" background-color="#419599" background-image="images/posit-wallpaper-4.jpg" background-position="left" background-size="contain"}
+
+:::{style="position: absolute; width: 45%; top: 33%; right: 40px; text-align: right;"}
+[Getting the Car on the Track: publishing to Connect]{style="color: #ffffff; font-size: 4rem;"}
+:::
+
+::: footer
+[You are sneaky!]{style="color: transparent;"}
+:::
+
+# First, why Posit? {.smaller}
+
+:::{.incremental}
+**Code-first research and data science**
+
+- **Value** - R and Python are free
+- **Portable** - no vendor lock-in, you can look under the hood and take your code with you
+- **Reproducible** - run code anywhere anytime
+- **Secure** - code can be inspected because it is open, our enterprise tools use your authentication provider
+- **Scalable** - use our tools in local or remote clusters like Kubernetes or Slurm
+- **Customizable** - when your analyses and products start with code, you build what you want
+- **First** - with R and Python you can use the latest functions and algorithms
+- **Beautiful** - R and Python incorporate beautiful JavaScript visualization libraries
+
+:::
+
+## This is all doable
+
+. . .
+
+:::{.nice-block}
+Some of it really easy
+:::
+
+. . .
+
+:::{.nice-block}
+Some of it hard  
+:::
+
+
+## We can help you
+
+# The philosophy
+
+- Code-first 
+- Use code to do analysis and build things 
+
+# The mental model
+
+- Building and racing cars
+
+:::{.incremental}
+
+- R and Python are publicly available tools - use them to build and share whatever you want
+
+- Think of our products, Workbench, Connect, and Package Manager, as garages or workshops where your tools can be organized and managed so that you can build and share
+
+:::
+
+# The tools
+
+- programming languages
+- R, Python, Julia, JavaScript, and more
+- Programming languages consist of code
+- Code is organized into packages, aka, digital bundles of code, documentation, and data
+- Programming languages come with some packages included
+- People develop more packages to add new capabilities to the core programming language
+
+# How does all of this come together?
+
+# {background-color="#303436" background-image="images/concept-map.png" background-position="top" background-size="contain"}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+- Development = building things = Posit Workbench
+- Production =  sharing things and rebuilding things = Posit Connect
+- Package management = giving everyone the right tools = Posit Package Manager
+
+
+# Let's inspect the garage, racetrack, and tool supplier some more
+
+## {background-color="#333333" background-image="images/bruce-mars-garage.jpg" background-size="contain"}
+
+:::{style="position: absolute; width: 40%; top: -62px; right: 8px; text-align: left;"}
+[**Workbench - garage where you write code that retrieves data, preps data, conducts analysis, builds reports, APIs, apps**]{style="color: #333333; font-size: 2rem;"}
+:::
+
+:::{style="position: absolute; bottom: 10px; left: 10px;"}
+[Photo by <a href="https://unsplash.com/@brucemars?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">bruce mars</a> on <a href="https://unsplash.com/photos/eDJHOMSZrT8?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>]{style="color: #fff; font-size: 1rem;"}
+:::
+
+---
+
+:::{.img-center}
+<img src="images/pwb.png" class="img-center">
+:::
+
+---
+
+## {background-color="#333333" background-image="images/spencer-davis-track.jpg" background-size="contain"}
+
+:::{style="position: absolute; width: 50%; top: -62px; right: 8px; text-align: left;"}
+[**Connect - racetrack where you make your race cars, i.e., apps and data products, available to other people, includes its own onsite garage that can rebuild your products on a schedule**]{style="color: #333333; font-size: 2rem;"}
+:::
+
+:::{style="position: absolute; bottom: 10px; left: 10px;"}
+[Photo by <a href="https://unsplash.com/it/@spencerdavis?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Spencer Davis</a> on <a href="https://unsplash.com/photos/ISkIIiYm0uQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>]{style="color: #fff; font-size: 1rem;"}
+:::
+
+---
+
+:::{.img-center}
+<img src="images/pct.png" class="img-center">
+:::
+
+---
+
+:::{.incremental}
+-  Publish to Connect with an easy button, or git-backed, or via its API
+-  Single node or in cluster
+-  Bare or in a docker container
+-  On-prem or a cloud server provider like AWS, Azure, Google Cloud
+-  On remote resource managers like Kubernetes or Slurm
+-  Your own enterprise authentication
+:::
+
+---
+
+:::{.incremental}
+-  Monitor and control server activity as an admin
+-  Connect to on-prem or remote data sources
+-  Host reports, data, APIs, apps, and more
+-  Schedule and run data prep scripts
+-  Schedule, run, and rebuild reports
+-  Email stakeholders as reports are rerun
+:::
+
+## {background-color="#333333" background-image="images/simon-kadula-factory.jpg" background-size="contain"}
+
+:::{style="position: absolute; width: 50%; top: -62px; right: 8px; text-align: left;"}
+[**Package Manager - the remote tool factory that supplies the same tools to your workshop and racetrack**]{style="color: #333333; font-size: 2rem;"}
+:::
+
+:::{style="position: absolute; bottom: 10px; left: 10px;"}
+[Photo by <a href="https://unsplash.com/@simonkadula?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Simon Kadula</a> on <a href="https://unsplash.com/photos/8gr6bObQLOI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>]{style="color: #fff; font-size: 1rem;"}
+:::
+
+---
+
+:::{.img-center}
+<img src="images/ppm.png" class="img-center">
+:::
+
+---
+
+- Bring the packages behind your firewall 
+- Public R and Python packages
+- Your own private packages
+- Pre-built binary versions from our sync service
+- Curated subsets of packages (R now, Python coming soon)
+- Validated sets (you validate)
+- Block access to vulnerable packages (coming soon)
+
+# Ways we help you
+
+- On-prem evaluation 
+- Technical Support during eval
+- Architecture [best practices](https://solutions.posit.co/)
+- [Posit Academy](https://posit.co/products/enterprise/academy/) is the best way to build data science skill
+- After you license
+	- [Technical support](https://posit.co/about/support-agreement/) included
+	- [Premium Plus Support](https://posit.co/about/premium-plus-support/) available
+	- [Technical Account Management](https://posit.co/about/tam-terms-of-service/) available
+	- Full Service Partners can provide additional IT and education resources
+
+# Resources
+
+## Our bike prediction project {.smaller}
+
+- Built in Workbench
+	- `tidymodels`
+	- `vetiver`
+	- `pins`
+- Published to Connect
+	- ETL script
+	- Model training
+	- Comms to the database
+	- API to serve the model 
+	- Shiny app for end users to get predictions from the model
+- [Fully documented with free code](https://solutions.posit.co/gallery/bike_predict/)
+- All orchestrated and [hosted on our public Connect server](https://colorado.posit.co/rsc/bike-predict-r-dashboard/document.html)
+
+---
+
+![](images/bike.png){width=100%}
+
+## Other Resources {.smaller}
+
+- [Posit](https://posit.co)
+- [All docs](https://docs.posit.co/)
+- [Solutions](https://solutions.posit.co/)
+- [Public Sector Cheatsheet for all links in one place](https://colorado.posit.co/rsc/public-sector-cheatsheet/)
+- [Quarto](https://quarto.org) - An open-source scientific and technical publishing system
+- [Shiny](https://shiny.rstudio.com/) apps for R
+- [Shiny](https://shiny.rstudio.com/py/) apps for Python
+
+Data handling
+
+- [dtplyr](https://dtplyr.tidyverse.org/) and [data.table](https://rdatatable.gitlab.io/data.table/)
+- [arrow](https://arrow.apache.org/) for [R](https://arrow.apache.org/docs/r/) and [duckdb](https://duckdb.org/) for [R](https://duckdb.org/docs/api/r.html)
+- [Databases best practices](https://solutions.posit.co/connections/db/best-practices/)
+- [futureverse](https://www.futureverse.org/)
+- [sparklyr](https://spark.rstudio.com/)

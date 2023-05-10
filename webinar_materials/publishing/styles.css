@@ -1,0 +1,103 @@
+/*-- scss:defaults --*/
+  
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+// fonts
+$font-family-sans-serif: 'Open Sans', sans-serif !default;
+$font-family-monospace: 'Source Code Pro', monospace !default;
+
+// colors
+$dark-basic: #333333 !default;
+$medium-basic: #707073 !default;
+$light-basic: #c2c2c4 !default;
+$lightest-basic: #fff !default;
+$body-bg: $light-basic !default;
+$body-color: $dark-basic !default;
+$selection-bg: $medium-basic !default;
+$posit-blue-med: #447099 !default;
+$posit-orange-med: #EE6331 !default;
+$posit-teal: #419599 !default;
+$code-color: #297075 !default;
+  
+// dark colors
+$dark-bg: $dark-basic !default;
+$dark-bg-text-color:	$light-basic !default;
+$dark-bg-link-color:	#A2B8CB !default;
+$dark-bg-code-color:	$posit-orange-med !default;
+
+$link-color: $posit-blue-med !default;
+$link-decoration: underline !default;
+$link-shade-percentage: 20% !default;
+$link-hover-color: shift-color($link-color, $link-shade-percentage) !default;
+$link-hover-decoration: null !default;
+  
+  
+// headings
+$presentation-heading-font: "Open Sans", sans-serif !default;
+
+/*-- scss:rules --*/
+
+body {
+  font-weight: 400 !important;
+  color: $dark-basic !important;
+}
+
+h2 {
+  font-weight: 300 !important;
+  color: $dark-basic !important;
+}
+
+.title-box {
+  color: $lightest-basic;
+  font-size: 3rem;
+  font-weight: 400;
+  position: absolute;
+  left: 25%;
+  top: 25%;
+  height: 50%;
+  width: 70%;
+  background-color: #447099;
+  padding-top: 2rem;
+  padding-left: 2rem;
+  padding-right: 10rem;
+  padding-bottom: 2rem;
+  box-shadow: 10px 10px 0px 0px #EE6331;
+  border-radius: 6px;
+}
+
+.title-text {
+  color: $lightest-basic;
+  font-size: 6rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.title-logo {
+  display: inline-block;
+  width: 180px;
+  vertical-align: top;
+  top-margin: 1rem;
+}
+
+.nice-block {
+  display: block;
+  padding: 2rem 5rem 2rem 5rem;
+}
+
+section.has-dark-background > h2 {
+  font-weight: 300 !important;
+  color: #fff !important;
+}
+
+.sourceCode.r {
+  height: 910px;
+}
+
+.img-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
