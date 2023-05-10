@@ -1,0 +1,15 @@
+name: into-the-unknown
+title: into-the-unknown
+username: jeremy.allen
+account: jeremy.allen
+server: colorado.posit.co
+hostUrl: https://colorado.posit.co/rsc/__api__
+appId: 15852
+bundleId: 72169
+url: https://colorado.posit.co/rsc/content/e915fada-4c47-4c37-8c70-987d3da8a867/
+when: 1680095490.11535
+lastSyncTime: 1680095490.11536
+quarto_version: 1.3.197
+quarto_engines: knitr
+asMultiple: FALSE
+asStatic: FALSE
