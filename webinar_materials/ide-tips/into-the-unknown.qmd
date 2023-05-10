@@ -38,7 +38,7 @@ I like it to go to the console
 
 -   `r emo::ji("gear")` -\> *Chunk Output in Console*
 
-### Console is where?
+### Console is where? 
 
 I move my console to the top right quadrant: *Tools*-\>*Global Options*-\>*Pane Layout*
 
@@ -54,8 +54,6 @@ I move my console to the top right quadrant: *Tools*-\>*Global Options*-\>*Pane 
 #| eval: true
 #| warning: false
 #| error: false
-
-emo::ji("red heart")
 
 dat <- tibble::as_tibble(diamonds) 
 
