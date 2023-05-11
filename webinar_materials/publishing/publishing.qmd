@@ -17,8 +17,8 @@ engine: knitr
 
 ## {#TitleSlide data-menu-title="Title Slide" background-color="#419599" background-image="images/posit-wallpaper-4.jpg" background-position="left" background-size="contain"}
 
-:::{style="position: absolute; width: 45%; top: 33%; right: 40px; text-align: right;"}
-[Getting the Car on the Track: publishing to Connect]{style="color: #ffffff; font-size: 4rem;"}
+:::{style="position: absolute; width: 500px; top: 23%; right: 2%; text-align: right;"}
+[Getting the Car on the Track: publishing to Connect]{style="color: #ffffff; font-size: 3rem;"}
 :::
 
 ::: footer
@@ -43,18 +43,7 @@ engine: knitr
 
 ## This is all doable
 
-. . .
-
-:::{.nice-block}
-Some of it really easy
-:::
-
-. . .
-
-:::{.nice-block}
-Some of it hard  
-:::
-
+## Even if some of it is hard  
 
 ## We can help you
 
@@ -70,48 +59,25 @@ Some of it hard
 :::{.incremental}
 
 - R and Python are publicly available tools - use them to build and share whatever you want
-
-- Think of our products, Workbench, Connect, and Package Manager, as garages or workshops where your tools can be organized and managed so that you can build and share
+- Workbench is your main garage where you use the tools to build and test cars
+- Connect is the racetrack where you use and present you cars
+- Package Manager is the tool distribution hub that ensures consistent tools in all places
 
 :::
-
-# The tools
-
-- programming languages
-- R, Python, Julia, JavaScript, and more
-- Programming languages consist of code
-- Code is organized into packages, aka, digital bundles of code, documentation, and data
-- Programming languages come with some packages included
-- People develop more packages to add new capabilities to the core programming language
 
 # How does all of this come together?
 
 # {background-color="#303436" background-image="images/concept-map.png" background-position="top" background-size="contain"}
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-- Development = building things = Posit Workbench
-- Production =  sharing things and rebuilding things = Posit Connect
-- Package management = giving everyone the right tools = Posit Package Manager
-
-
 # Let's inspect the garage, racetrack, and tool supplier some more
 
 ## {background-color="#333333" background-image="images/bruce-mars-garage.jpg" background-size="contain"}
 
-:::{style="position: absolute; width: 40%; top: -62px; right: 8px; text-align: left;"}
+:::{style="position: absolute; width: 40%; top: -42px; right: 88px; text-align: left;"}
 [**Workbench - garage where you write code that retrieves data, preps data, conducts analysis, builds reports, APIs, apps**]{style="color: #333333; font-size: 2rem;"}
 :::
 
-:::{style="position: absolute; bottom: 10px; left: 10px;"}
+:::{style="position: absolute; bottom: 10px; left: 42%;"}
 [Photo by <a href="https://unsplash.com/@brucemars?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">bruce mars</a> on <a href="https://unsplash.com/photos/eDJHOMSZrT8?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>]{style="color: #fff; font-size: 1rem;"}
 :::
 
@@ -125,11 +91,11 @@ Some of it hard
 
 ## {background-color="#333333" background-image="images/spencer-davis-track.jpg" background-size="contain"}
 
-:::{style="position: absolute; width: 50%; top: -62px; right: 8px; text-align: left;"}
+:::{style="position: absolute; width: 50%; top: -42px; right: 58px; text-align: left;"}
 [**Connect - racetrack where you make your race cars, i.e., apps and data products, available to other people, includes its own onsite garage that can rebuild your products on a schedule**]{style="color: #333333; font-size: 2rem;"}
 :::
 
-:::{style="position: absolute; bottom: 10px; left: 10px;"}
+:::{style="position: absolute; bottom: 10px; left: 42%;"}
 [Photo by <a href="https://unsplash.com/it/@spencerdavis?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Spencer Davis</a> on <a href="https://unsplash.com/photos/ISkIIiYm0uQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>]{style="color: #fff; font-size: 1rem;"}
 :::
 
