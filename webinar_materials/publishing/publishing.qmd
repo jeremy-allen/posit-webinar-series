@@ -8,7 +8,7 @@ format:
     height: 900
     width: 1600
     logo: https://www.rstudio.com/assets/img/posit-logo-fullcolor-TM.svg
-    footer: <a href="https://colorado.posit.co/rsc/posit-possible/">https://colorado.posit.co/rsc/posit-possible/</a>
+    footer: <a href="https://colorado.posit.co/rsc/publishing-to-connect/">https://colorado.posit.co/rsc/publishing-to-connect/</a>
     slide-number: c/t
     link-external-newwindow: true
     theme: styles.scss
@@ -25,27 +25,7 @@ engine: knitr
 [You are sneaky!]{style="color: transparent;"}
 :::
 
-# First, why Posit? {.smaller}
-
-:::{.incremental}
-**Code-first research and data science**
-
-- **Value** - R and Python are free
-- **Portable** - no vendor lock-in, you can look under the hood and take your code with you
-- **Reproducible** - run code anywhere anytime
-- **Secure** - code can be inspected because it is open, our enterprise tools use your authentication provider
-- **Scalable** - use our tools in local or remote clusters like Kubernetes or Slurm
-- **Customizable** - when your analyses and products start with code, you build what you want
-- **First** - with R and Python you can use the latest functions and algorithms
-- **Beautiful** - R and Python incorporate beautiful JavaScript visualization libraries
-
-:::
-
-## This is all doable
-
-## Even if some of it is hard  
-
-## We can help you
+# Review
 
 # The philosophy
 
@@ -58,9 +38,9 @@ engine: knitr
 
 :::{.incremental}
 
-- R and Python are publicly available tools - use them to build and share whatever you want
-- Workbench is your main garage where you use the tools to build and test cars
-- Connect is the racetrack where you use and present you cars
+- R and Python are your tools to build with - build and share whatever you want
+- Workbench is your main garage where you use and organize the tools to build and test cars
+- Connect is the racetrack where you use and present your cars
 - Package Manager is the tool distribution hub that ensures consistent tools in all places
 
 :::
@@ -129,7 +109,7 @@ engine: knitr
 
 ## {background-color="#333333" background-image="images/simon-kadula-factory.jpg" background-size="contain"}
 
-:::{style="position: absolute; width: 50%; top: -62px; right: 8px; text-align: left;"}
+:::{style="position: absolute; width: 50%; top: -62px; right: 48px; text-align: left;"}
 [**Package Manager - the remote tool factory that supplies the same tools to your workshop and racetrack**]{style="color: #333333; font-size: 2rem;"}
 :::
 
@@ -152,6 +132,150 @@ engine: knitr
 - Curated subsets of packages (R now, Python coming soon)
 - Validated sets (you validate)
 - Block access to vulnerable packages (coming soon)
+
+## Publishing to Connect
+
+:::.nice-block
+You have built your race car in Workbench. Now it's time to [get it on the racetrack, Connect](https://solutions.posit.co/operations/deploy-methods/).
+:::
+
+:::{.incremental}
+-  Push-button
+-  Git-backed
+-  API
+:::
+
+## Push-button publishing
+
+First, let's look at global options and
+
+ - turn on diagnostics  
+ - connect a publishing account  
+
+---
+ 
+### Push-button publishing 
+ 
+:::{.incremental}
+- Driving the race car from your garage to the racetrack
+- When you want to publish content directly from your development environment
+- A reproducible bundle with code and a list of dependencies is automatically created
+- That bundle is published to Connect
+	- sidebar: Where does Connect get its packages from?
+	- Connect does not get packages from your laptop or Workbench
+	- Connect gets packages from where it is configured to get them from, OR
+	- from where you got them from
+- Available in the RStudio IDE and Jupyter Notebooks
+:::
+
+---
+ 
+### Key publication processes during push-button deployments
+
+Demo on into-the-unknown.qmd with push-button  
+
+In the "deploy" tab you will see:  
+
+:::{.incremental}
+- `rsconnect::deployApp()`
+- R version matching
+- Validating R library
+- Repository URLs
+- Install packages - symlinked from cache
+- Connecting to session
+- Rendering
+:::
+
+---
+
+### Sneak peek at API publishing
+
+demo on into-the-unknown.qmd with test-delpoy.R
+
+:::{.incremental}
+- if it's a single quarto doc, [add empty _quarto.yml](https://docs.posit.co/connect/user/publishing-cli-quarto/#limitations) to directory
+- quarto = quarto::quarto_path() or `which quarto` in your terminal
+- rsconnect::deployApp()
+- R version matching
+- Validating R library
+- Repository URLs
+- Install packages - symlinked from cache
+- Connecting to session
+- Rendering
+:::
+
+
+## Git-backed publishing 
+
+[Let Connect publish for you](https://docs.posit.co/connect/user/git-backed/#git-backed), pulling directly from your git repo!
+
+:::{.incremental}
+- Create and commit a manifest file
+	- Run `rsconnect::writeManifest()` from within your project directory
+	- use `rsconnect` version 0.8.15 or higher, `packageVersion("rsconnect")`
+	- Use `appPrimaryDoc` to specify file to deploy, `rsconnect::writeManifest(appPrimaryDoc = "report.Rmd")`
+	- For html and Rmd books, `rsconnect::writeManifest(appPrimaryDoc = "index.html", contentCategory = "site")`
+	- [For python](https://docs.posit.co/connect/user/git-backed/#creating-the-manifest-file-from-python) 
+	- Commit manifest to your local Git, push to the remote Git repo
+- Link Posit Connect to the Git repository
+:::
+
+## API / CI publishing 
+  
+[API publishing](https://solutions.posit.co/operations/deploy-methods/#api-backed-publishing) is the most flexible deployment method but also requires the most setup 
+
+- External CI/CD system pushes content updates to Connect using the API
+- Benefit - add tests and other pre-deployment activities
+
+---
+
+Integration
+
+- Practice of automating the integration of code changes including running tests or validations
+
+Deployment
+
+- Practice of automating the deployment of your code to an environment like Connect
+
+---
+
+### Steps to deploy:
+
+- Use renv to maintain consistency between the development and build environments
+- Create a Connect API key
+- Use `rsconnect` package to register your Connect server (directly or in your yaml)
+- Add your API Key and Server URL to secrets in your Github repository
+- Create a `manifest.json` file
+- Create your yaml in `.github/workflows/` using actions and scripts (make sure to remove your `.Rprofile`!)
+- Run your deployment!
+
+---
+
+### Lets learn the workflow
+
+Follow along here - [https://solutions.posit.co/operations/deploy-methods/ci-cd/github-actions/](https://solutions.posit.co/operations/deploy-methods/ci-cd/github-actions/)
+
+## {background-color="#ABB8C3" background-image="images/carbon1.png" background-size="contain"}
+
+## {background-color="#ABB8C3" background-image="images/carbon2.png" background-size="contain"}
+
+## {background-color="#ABB8C3" background-image="images/carbon3.png" background-size="contain"}
+
+## {background-color="#ABB8C3" background-image="images/carbon4.png" background-size="contain"}
+
+## {background-color="#ABB8C3" background-image="images/carbon5.png" background-size="contain"}
+
+--- 
+
+### API and CI Resources  
+
+- [GitHub Actions](https://github.com/rstudio/actions)
+- [Shiny app demo](https://github.com/sol-eng/shiny-app-demo-cicd-github-actions)
+- [Solutions article on GitHub actions](https://solutions.posit.co/operations/deploy-methods/ci-cd/github-actions/)
+- [Python examples](https://github.com/sol-eng/python-examples/blob/main/.github/workflows/deploy.yml)
+- [Workflows](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)
+
+# Wrapping Up
 
 # Ways we help you
 
