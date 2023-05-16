@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.197">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,9 +17,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -46,48 +47,19 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -101,8 +73,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="into-the-unknown_files/libs/clipboard/clipboard.min.js"></script>
@@ -152,12 +123,12 @@ div.csl-indent {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
-<div class="callout callout-style-default callout-note callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Note
 </div>
 </div>
@@ -330,7 +301,7 @@ Note
 </section>
 </section>
 <section id="visual-editor" class="level2">
-<h2 class="anchored" data-anchor-id="visual-editor">🔳 Visual editor</h2>
+<h2 class="anchored" data-anchor-id="visual-editor">🔽 Visual editor</h2>
 <ul>
 <li><p>normal doc styling features</p></li>
 <li><p>insert links, pics, tables, citations, footnotes, and more</p></li>
@@ -364,17 +335,17 @@ Note
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-Little2020" class="csl-entry" role="doc-biblioentry">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Little2020" class="csl-entry" role="listitem">
 Little, Alexander G., Isabella Loughland, and Frank Seebacher. 2020. <span>“What Do Warming Waters Mean for Fish Physiology and Fisheries?”</span> <em>Journal of Fish Biology</em> 97 (2): 328–40. <a href="https://doi.org/10.1111/jfb.14402">https://doi.org/10.1111/jfb.14402</a>.
 </div>
-<div id="ref-Melnychuk2017" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Melnychuk2017" class="csl-entry" role="listitem">
 Melnychuk, Michael C., Emily Peterson, Matthew Elliott, and Ray Hilborn. 2016. <span>“Fisheries Management Impacts on Target Species Status.”</span> <em>Proceedings of the National Academy of Sciences</em> 114 (1): 178–83. <a href="https://doi.org/10.1073/pnas.1609915114">https://doi.org/10.1073/pnas.1609915114</a>.
 </div>
-<div id="ref-Teh2017" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Teh2017" class="csl-entry" role="listitem">
 Teh, Louise S. L., Allison Witter, William W. L. Cheung, U. Rashid Sumaila, and Xueying Yin. 2016. <span>“What Is at Stake? Status and Threats to South China Sea Marine Fisheries.”</span> <em>Ambio</em> 46 (1): 57–72. <a href="https://doi.org/10.1007/s13280-016-0819-0">https://doi.org/10.1007/s13280-016-0819-0</a>.
 </div>
-<div id="ref-Welcomme2010" class="csl-entry" role="doc-biblioentry">
+<div id="ref-Welcomme2010" class="csl-entry" role="listitem">
 Welcomme, Robin L., Ian G. Cowx, David Coates, Christophe Béné, Simon Funge-Smith, Ashley Halls, and Kai Lorenzen. 2010. <span>“Inland Capture Fisheries.”</span> <em>Philosophical Transactions of the Royal Society B: Biological Sciences</em> 365 (1554): 2881–96. <a href="https://doi.org/10.1098/rstb.2010.0168">https://doi.org/10.1098/rstb.2010.0168</a>.
 </div>
 </div></section></div></main>
@@ -406,9 +377,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {

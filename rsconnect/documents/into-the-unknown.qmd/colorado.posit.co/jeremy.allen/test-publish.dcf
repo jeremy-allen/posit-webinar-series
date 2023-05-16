@@ -1,0 +1,11 @@
+name: test-publish
+title: test-publish
+username: jeremy.allen
+account: jeremy.allen
+server: colorado.posit.co
+hostUrl: https://colorado.posit.co/rsc/__api__
+appId: 16392
+bundleId: 74256
+url: https://colorado.posit.co/rsc/content/6ab5333d-8bce-41ee-9117-06474394647b/
+when: 1684233492.55678
+lastSyncTime: 1684233492.55679

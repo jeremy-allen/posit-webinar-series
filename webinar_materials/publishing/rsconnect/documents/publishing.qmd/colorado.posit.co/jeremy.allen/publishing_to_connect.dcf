@@ -1,0 +1,14 @@
+name: publishing_to_connect
+title: Publishing to Connect
+username: jeremy.allen
+account: jeremy.allen
+server: colorado.posit.co
+hostUrl: https://colorado.posit.co/rsc/__api__
+appId: 16395
+bundleId: 74286
+url: https://colorado.posit.co/rsc/publishing-to-connect/
+when: 1684248254.76185
+lastSyncTime: 1684248254.76185
+asMultiple: FALSE
+asStatic: TRUE
+additionalFiles: images/carbon5.png|images/carbon4.png|images/carbon3.png|images/carbon2.png|images/carbon1.png|images/posit-wallpaper-4.jpg|images/spencer-davis-track.jpg|images/simon-kadula-factory.jpg|images/sessions.png|images/concept-map.png|images/bruce-mars-garage.jpg
