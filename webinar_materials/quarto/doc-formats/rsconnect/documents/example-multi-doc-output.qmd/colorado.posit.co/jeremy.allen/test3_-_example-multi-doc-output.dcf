@@ -1,0 +1,16 @@
+name: test3_-_example-multi-doc-output
+title: test3 - example-multi-doc-output
+username: jeremy.allen
+account: jeremy.allen
+server: colorado.posit.co
+hostUrl: https://colorado.posit.co/rsc/__api__
+appId: 17079
+bundleId: 76729
+url: https://colorado.posit.co/rsc/content/ad251ec4-c2de-4b18-8b14-3782b7bb8f68/
+when: 1688651884.27448
+lastSyncTime: 1688651884.27449
+quarto_version: 1.3.353
+quarto_engines: markdown
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: _extensions

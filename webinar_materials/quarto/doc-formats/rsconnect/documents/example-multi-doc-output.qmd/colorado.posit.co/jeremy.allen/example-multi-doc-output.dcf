@@ -1,0 +1,13 @@
+name: example-multi-doc-output
+title: example-multi-doc-output
+username: jeremy.allen
+account: jeremy.allen
+server: colorado.posit.co
+hostUrl: https://colorado.posit.co/rsc/__api__
+appId: 17078
+bundleId: 76728
+url: https://colorado.posit.co/rsc/content/4c11e85f-2e23-4e59-9e0d-fda3bd5d21da/
+when: 1688647888.03685
+lastSyncTime: 1688647888.03686
+asMultiple: FALSE
+asStatic: TRUE
