@@ -13,6 +13,8 @@ format:
     link-external-newwindow: true
     theme: styles.scss
 engine: knitr
+editor_options: 
+  chunk_output_type: console
 ---
 
 ## {#TitleSlide data-menu-title="Title Slide" background-color="#419599" background-image="images/posit-wallpaper-4.jpg" background-position="left" background-size="contain"}
