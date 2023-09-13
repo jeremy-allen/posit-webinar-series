@@ -1,0 +1,382 @@
+---
+format: 
+  revealjs:
+    controls: true
+    overview: true
+    # include-in-header: preview.html
+    hash-type: number
+    transition: fade
+    auto-stretch: false
+    # embed-resources: true
+    height: 900
+    width: 1600
+    logo: https://www.rstudio.com/assets/img/posit-logo-fullcolor-TM.svg
+    footer: <a href="https://colorado.posit.co/rsc/parallel-processing/">https://colorado.posit.co/rsc/parallel-processing/</a> by [@jeremy_data@fosstodon.org](https://fosstodon.org/@jeremy_data)
+    slide-number: c/t
+    link-external-newwindow: true
+    theme: [styles.scss]
+engine: knitr
+editor_options: 
+  chunk_output_type: console
+---
+
+# [Moving Faster With R: Parallel Processing]{style="color: #404041; font-size: 5rem;"}
+
+Maybe breaking some laws  
+
+## Today is a guided tour of the city, not eating in a restaurant {.smaller}	
+
+:::{.fragment .fade-in}
+This presentation is a map for the tour and a map of the city
+:::
+
+:::{.fragment .fade-in}
+A map is a model, and you know what they say about models...
+:::
+
+<br>
+
+:::{.fragment .fade-in}
+Agenda
+
+- Threads and processes
+- Types of parallel processing: embarrassing and massive
+- Laws: Amdal's and Gustafson's
+- R packages
+- Examples
+- Your uses cases
+- Resources
+:::
+
+## Threads and processes
+
+::: {.incremental}
+- A process is a sequence of instructions in memory plus access to resources
+- A thread is a part of a process, an entity scheduled for execution on the CPU, [more](https://stackoverflow.com/a/19518207) 
+- Threads share memory space because they belong to the same process
+- Multi-threading is when work within a single process is completed across multiple threads within the parent process
+- Parallel processing is when work within a machine or cluster of machines is completed across multiple processes simultaneously
+- Distinct processes do not automatically share memory
+:::
+
+# Types of parallel processing: embarrassing and massive
+
+## Embarrassingly Parallel Problem: When parallel processing is simplest or embarrassingly easy
+
+::: {.incremental}
+- Computations do not need to share memory space
+- One computation is not dependent on the result of another computation
+- Examples are: rendering each pixel of an image independently or applying a function to state- or country-level data independently
+:::
+
+## Massively Parallel Problem: Decomposing an algorithm into dependent parts
+
+::: {.incremental}
+- Computations may need to share data
+- One part of the algorithm may be dependent on other parts
+- Complex communication between the parts is required
+- Special networking can be needed for this massive interprocess communication, for example, [InfiniBand](https://en.wikipedia.org/wiki/InfiniBand)
+- Examples are:  fluid dynamics simulations in weather forecasting  and structural stability simulations in oil well detection
+:::
+
+# Breaking the law: how fast can I go?
+
+:::{.fragment .fade-in}
+It depends on the law, Amdal's and Gustafson's
+:::
+
+## Can I achieve a 2x speedup by using two CPUs instead of one?
+
+::: {.incremental}
+- For many analyses, some parts cannot be parallelized and other parts can
+- The parts that cannot be act as a cap on the amount of speedup that can be gained
+- This is [Amdal's Law](https://en.wikipedia.org/wiki/Amdahl%27s_law)
+:::
+
+## Let's take the kids to soccer {.smaller}
+
+:::: {.fragment}
+::: {.incremental}
+- Imagine a single parent with two kids
+- 10 am Saturday morning, each kid has a sporting event in two different places
+- Once started, yes, two games are getting accomplished in parallel
+- But, at least in our analogy, driving each kid to their respective location could not be parallelized
+- Extra costs incurred
+  - getting kids to two different places
+  - keeping them safe while there
+  - returning them home from separate places
+:::
+::::
+
+:::: {.fragment}
+All of that still took less time than two consecutive soccer games, but the efficiency gain is not quite double.
+::::
+
+:::: {.fragment}
+***The non-parallelizable actions cap how much speedup can be achieved. This is [Amdal's Law](https://en.wikipedia.org/wiki/Amdahl%27s_law).***
+::::
+
+
+## But there is more to this parenting story
+
+::: {.fragment}
+- Last season, the kid's games were consecutive, taking all day
+- The family became accustomed to being in town all Saturday
+- This season, the games occur in parallel in the morning, 4 hours in the afternoon available!
+:::
+
+::: {.fragment}
+***To the store! Last year and this year, the family still gets home at 5 pm, but this year they accomplished two soccer games plus shopping in the same amount of time.***
+:::
+
+---
+
+If you speed up from parallel processing, what will you do with the extra time and resources? Three main scenarios
+
+::: {.incremental}
+- **Win Sooner**: Will you simply perform the same analysis faster and be done sooner?
+- **Zoom In**: Will you use a more granular level of analysis that gives you more accuracy but consumes the time otherwise saved?
+- **Do More**: Will you stick to the original analysis and add on additional tasks?
+:::
+
+::: {.fragment}
+***IMHO, you will either increase the resolution of your analysis or add more tasks to fill the extra time. This is [Gustafson's Law](https://en.wikipedia.org/wiki/Gustafson%27s_law).***
+:::
+
+
+# The biggest deal about all this? Opportunity Costs
+
+:::{}
+**Opportunity Costs**: If Gustafson's Law is true, parallel processing is less about how much time can be saved, and more about opportunity costs, i.e., if I don't do this faster, what other opportunities am I missing?
+:::
+
+---
+
+Of course, there are exceptions
+
+- On a really expensive server?
+- Your organization's top priority at the moment is reducing costs?
+
+::: {.fragment}
+If so the Win Sooner scenario suits you best. Other exceptions?
+:::
+
+# Parallel Processing and R
+
+By default, operating systems assign R sessions to a single process. We want to go faster.
+
+## Two types of parellel problems
+
+:::: {.columns}
+
+::: {.column width="45%"}
+**Embarrassingly (easy!) Parallel**
+
+::: {.incremental}
+- Computations do not need to share memory space
+- One computation is not dependent on another
+- Examples are: rendering each pixel of an image or analyzing state data
+:::
+:::
+
+::: {.column width="55%"}
+**Massively Parallel**
+
+::: {.incremental}
+- Computations may need to share data
+- One computation may depend on another
+- Complex communication between the parts is required
+- Special networking needed
+- Examples are:  fluid dynamics simulations in weather forecasting  and structural stability simulations in oil well detection
+:::
+:::
+
+::::
+
+## R packages for each type {.smaller}
+
+:::: {.columns}
+
+::: {.column width="55%"}
+**Embarrassingly (easy!) Parallel**
+
+::: {.fragment}
+- `furrr` - apply `purrr` functions in parallel
+- `doParallel`, baackend for `foreach`
+- `doSnow`, `doMPI`, `doFuture`
+- `future` - concurrent and asynchronous evaluation of code
+- In HPCs - `batchtools` and `clustermq` are very mature
+- `future`supports local or HPC backends
+- New kids on the block - `crew`, `crew.cluster`, `mirai`
+- `snowfall` - abstraction of older `snow`
+- `rslurm` - parallelizing work with Slurm
+- `sparklyr` - local or cloud parallelism
+:::
+:::
+
+::: {.column width="45%"}
+**Massively Parallel**
+
+::: {.fragment}
+- `Rmpi` - MPI (Message Passing Interface) standard
+- `rpvm` - no longer actively maintained
+- `pbdMPI` - S4 classes to directly interface MPI
+- `snow` - can use PVM, MPI, NWS, direct networking sockets
+- `snowfall`
+:::
+:::
+
+::::
+
+# Examples
+
+## foreach and doParallel
+
+From my colleague Roger, who ran similar code at T-Mobile before Posit
+```{r}
+#| echo: true
+#| eval: false
+
+
+# run these on 3 states - IL, WA, CO
+# FIPS codes for these are - 17, 53, 08
+
+library(sf)
+library(dplyr)
+library(foreach)
+library(doParallel)
+
+# Read in the saved set of BG that are IL, WA, CO + 100 mile buffer
+bg <- readRDS("data/bg_2_bg_centroid_sample.rds")
+bg <- select(bg, Id, Latitude, Longitude)
+bg$Id <- as.character(bg$Id)
+bg$Id <- sprintf("BG%s", as.character(bg$Id))
+
+# Reduce the set to just the points in IL, WA, CO
+il_wa_co <- filter( bg, substr(Id, 1,4) %in% c("BG17", "BG53", "BG08") )
+
+# Reproject these geometries to Albers Equal Area
+bg <- st_transform(bg, crs = 5070)
+il_wa_co <- st_transform(il_wa_co, crs = 5070)
+
+# We need to identify all of the blockgroups that are within 100 miles of an IL, WA, CO
+# (160934 meters = 100 miles) Albers
+# 500 in 36 secs with 10 threads
+cl <- makeCluster(10) 
+registerDoParallel(cl)
+{
+  time1 <- proc.time()
+  results <- foreach(i = 1:nrow(il_wa_co), .combine=rbind) %dopar% {
+    OriginId <- il_wa_co[i,]$Id
+    ring <- sf::st_buffer(il_wa_co[i,], 160934)
+    ring <- ring$geometry
+    drivetime_bg <- sf::st_intersection(bg, ring)
+    list("BG_ID" = OriginId, "Blockgroups" = drivetime_bg$Id)
+  }
+  stopCluster(cl)
+  proc.time() - time1
+}
+
+nrow(results)
+
+# user  system elapsed 
+# 62.28   15.82 2150.62 
+# > 
+#   > nrow(results)
+# [1] 17999
+
+saveRDS(results, "data/BG_Within_100mi_IL_WA_CO.rds")
+```
+
+## furrr - Parallelize purrr functions locally
+
+```{r}
+#| echo: true
+#| eval: false
+
+library(furrr)
+library(purrr)
+library(tictoc)
+
+# This should take 6 seconds in total running sequentially
+plan(sequential)
+
+tic()
+nothingness <- future_map(c(2, 2, 2), ~Sys.sleep(.x))
+toc()
+
+# This should take ~2 seconds running in parallel, with a little overhead
+# in `future_map()` from sending data to the workers. There is generally also
+# a one time cost from `plan(multisession)` setting up the workers.
+plan(multisession, workers = 3)
+
+tic()
+nothingness <- future_map(c(2, 2, 2), ~Sys.sleep(.x))
+toc()
+
+
+```
+
+
+## future - Parallelize on local machine
+
+```{r}
+#| echo: true
+#| eval: false
+
+library(future.apply)
+plan(multisession, workers = 3)
+
+info <- future_lapply(seq_len(nbrOfWorkers()), function(idx) {
+  data.frame(idx = idx, hostname = Sys.info()[["nodename"]], pid = Sys.getpid())
+})
+info <- do.call(rbind, info)
+info
+```
+
+
+## future - Parallelize on multiple machines
+
+```{r}
+#| echo: true
+#| eval: false
+
+library(future.apply)
+plan(cluster, workers = c("dev1", "dev2", "dev3", "dev3", "dev3"))
+
+info <- future_lapply(seq_len(nbrOfWorkers()), function(idx) {
+  data.frame(idx = idx, hostname = Sys.info()[["nodename"]], pid = Sys.getpid())
+})
+info <- do.call(rbind, info)
+```
+
+## future - Parallelize via HPC job scheduler
+
+```{r}
+#| echo: true
+#| eval: false
+
+# plan(batchtools_slurm)  ## Slurm cluster
+# plan(batchtools_sge)    ## SGE cluster 
+
+library(future.apply)
+plan(future.batchtools::batchtools_sge, workers = 3)
+
+info <- future_lapply(seq_len(nbrOfWorkers()), function(idx) {
+  data.frame(idx = idx, hostname = Sys.info()[["nodename"]], pid = Sys.getpid())
+})
+
+
+```
+
+# Your Uses Cases?
+
+# Resources
+
+- Me! Want us to dive deeper into a specific use case?
+- [CRAN task view](https://cran.r-project.org/web/views/HighPerformanceComputing.html)
+- [futureverse](https://www.futureverse.org/)
+- [Futureverse - A Unifying Parallelization Framework in R for Everyone](https://henrikbengtsson.github.io/course-stanford-futureverse-2023/)
+- [Measuring performance, Ch 23 of Advanced R](https://adv-r.hadley.nz/perf-measure.html)
+
+

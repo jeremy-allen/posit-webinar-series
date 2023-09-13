@@ -1,0 +1,12 @@
+name: parallel_processing_in_r
+title: Parallel Processing in R
+username: jeremy.allen
+account: jeremy.allen
+server: colorado.posit.co
+hostUrl: https://colorado.posit.co/rsc/__api__
+appId: 17882
+bundleId: 79666
+url: https://colorado.posit.co/rsc/parallel-processing/
+version: 1
+asMultiple: FALSE
+asStatic: TRUE
