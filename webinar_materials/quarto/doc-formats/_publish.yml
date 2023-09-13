@@ -1,0 +1,4 @@
+- source: example-multi-doc-output.qmd
+  quarto-pub:
+    - id: 8d2a931b-aa11-47d3-a011-47f185646b18
+      url: 'https://jeremydata.quarto.pub/output-to-multiple-doc-formats'

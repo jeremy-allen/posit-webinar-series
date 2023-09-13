@@ -1,0 +1,11 @@
+name: demo-publish-hello
+title: demo-publish-hello
+username: jeremy.allen
+account: jeremy.allen
+server: colorado.posit.co
+hostUrl: https://colorado.posit.co/rsc/__api__
+appId: 16467
+bundleId: 74453
+url: https://colorado.posit.co/rsc/content/2dd9c735-3975-4029-b032-20822bc2d06f/
+when: 1684262278.17791
+lastSyncTime: 1684262278.17792
