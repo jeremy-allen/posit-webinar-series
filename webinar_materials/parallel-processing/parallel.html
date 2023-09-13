@@ -696,21 +696,26 @@
 <h2>future - Parallelize on local machine</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(future)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(future.apply)</span>
-<span id="cb3-3"><a href="#cb3-3"></a></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># gives the number of CPU cores available to your R process as given by R options and environment variables, including those set by job schedulers on high-performance compute (HPC) clusters.</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a>parallelly<span class="sc">::</span><span class="fu">availableCores</span>() </span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co"># Also:</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="fu">availableWorkers</span>()</span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="fu">nbrOfWorkers</span>()</span>
-<span id="cb3-9"><a href="#cb3-9"></a></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="fu">plan</span>(multisession, <span class="at">workers =</span> <span class="dv">3</span>)</span>
-<span id="cb3-11"><a href="#cb3-11"></a></span>
-<span id="cb3-12"><a href="#cb3-12"></a>info <span class="ot">&lt;-</span> <span class="fu">future_lapply</span>(<span class="fu">seq_len</span>(<span class="fu">nbrOfWorkers</span>()), <span class="cf">function</span>(idx) {</span>
-<span id="cb3-13"><a href="#cb3-13"></a>  <span class="fu">data.frame</span>(<span class="at">idx =</span> idx, <span class="at">hostname =</span> <span class="fu">Sys.info</span>()[[<span class="st">"nodename"</span>]], <span class="at">pid =</span> <span class="fu">Sys.getpid</span>())</span>
-<span id="cb3-14"><a href="#cb3-14"></a>})</span>
-<span id="cb3-15"><a href="#cb3-15"></a>info <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, info)</span>
-<span id="cb3-16"><a href="#cb3-16"></a>info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(parallelly)</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="fu">library</span>(future.apply)</span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co"># Gives the number of CPU cores available to your R process as given by R options and environment variables, including those set by job schedulers on high-performance compute (HPC) clusters.</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a>parallelly<span class="sc">::</span><span class="fu">availableCores</span>() </span>
+<span id="cb3-8"><a href="#cb3-8"></a></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co"># The availableCores() function is designed as a better, safer alternative to detectCores() of the parallel package. It is designed to be a worry-free solution for developers and end-users to query the number of available cores - a solution that plays nice on multi-tenant systems, in Linux containers, on high-performance compute (HPC) cluster. More at https://parallelly.futureverse.org/</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co"># Also:</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="fu">availableWorkers</span>()</span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="fu">nbrOfWorkers</span>()</span>
+<span id="cb3-14"><a href="#cb3-14"></a></span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="fu">plan</span>(multisession, <span class="at">workers =</span> <span class="dv">3</span>)</span>
+<span id="cb3-16"><a href="#cb3-16"></a></span>
+<span id="cb3-17"><a href="#cb3-17"></a>info <span class="ot">&lt;-</span> <span class="fu">future_lapply</span>(<span class="fu">seq_len</span>(<span class="fu">nbrOfWorkers</span>()), <span class="cf">function</span>(idx) {</span>
+<span id="cb3-18"><a href="#cb3-18"></a>  <span class="fu">data.frame</span>(<span class="at">idx =</span> idx, <span class="at">hostname =</span> <span class="fu">Sys.info</span>()[[<span class="st">"nodename"</span>]], <span class="at">pid =</span> <span class="fu">Sys.getpid</span>())</span>
+<span id="cb3-19"><a href="#cb3-19"></a>})</span>
+<span id="cb3-20"><a href="#cb3-20"></a>info <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, info)</span>
+<span id="cb3-21"><a href="#cb3-21"></a>info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">

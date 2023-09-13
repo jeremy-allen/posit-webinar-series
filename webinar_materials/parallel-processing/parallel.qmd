@@ -238,7 +238,6 @@ From my colleague Roger, who ran similar code at T-Mobile before Posit
 #| echo: true
 #| eval: false
 
-
 # run these on 3 states - IL, WA, CO
 # FIPS codes for these are - 17, 53, 08
 
@@ -326,10 +325,15 @@ toc()
 #| eval: false
 
 library(future)
+library(parallelly)
 library(future.apply)
 
-# gives the number of CPU cores available to your R process as given by R options and environment variables, including those set by job schedulers on high-performance compute (HPC) clusters.
+# Gives the number of CPU cores available to your R process as given by R options and environment variables, including those set by job schedulers on high-performance compute (HPC) clusters.
+
 parallelly::availableCores() 
+
+# The availableCores() function is designed as a better, safer alternative to detectCores() of the parallel package. It is designed to be a worry-free solution for developers and end-users to query the number of available cores - a solution that plays nice on multi-tenant systems, in Linux containers, on high-performance compute (HPC) cluster. More at https://parallelly.futureverse.org/
+
 # Also:
 availableWorkers()
 nbrOfWorkers()
