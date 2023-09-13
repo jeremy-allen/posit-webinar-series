@@ -3,7 +3,7 @@ rsconnect::deployApp(appDir = "/Users/jeremyallen/projects/posit-webinar-series/
 					 appSourceDoc = "into-the-unknown.qmd",
 					 account = "jeremy.allen",
 					 server = "colorado.posit.co",
-					 appTitle = "test-publish",
+					 appTitle = "demo-publish-hello",
 					 logLevel = "normal",
 					 quarto = quarto::quarto_path()) 
 
