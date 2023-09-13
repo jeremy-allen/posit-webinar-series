@@ -16,7 +16,7 @@ format:
 engine: knitr
 ---
 
-##  {#TitleSlide data-menu-title="TitleSlide" background-color="#303436" background-image="images/quarto-hamlet-1.jpeg" background-position="left" background-size="contain"}
+##  {#TitleSlide data-menu-title="TitleSlide" background-color="#303436" background-position="left" background-size="contain"}
 
 ::: {style="position: absolute; left: 25%; top: 25%; height: 50%; width: 80%; background-color: #447099; padding: 1.5rem; padding-right: 10rem; box-shadow: 10px 10px 0px 0px #EE6331; border-radius: 5px;"}
 [Quarto for Reproducible Publications]{style="font-size: 5rem; font-weight: bold; line-height: 5rem; margin: 0px"}
