@@ -202,7 +202,8 @@ By default, operating systems assign R sessions to a single process. We want to 
 
 ::: {.fragment}
 - `furrr` - apply `purrr` functions in parallel
-- `doParallel`, baackend for `foreach`
+- `parallelly` - functions that enhance `base::parallel`
+- `doParallel`, backend for `foreach`
 - `doSnow`, `doMPI`, `doFuture`
 - `future` - concurrent and asynchronous evaluation of code
 - In HPCs - `batchtools` and `clustermq` are very mature
@@ -324,7 +325,15 @@ toc()
 #| echo: true
 #| eval: false
 
+library(future)
 library(future.apply)
+
+# gives the number of CPU cores available to your R process as given by R options and environment variables, including those set by job schedulers on high-performance compute (HPC) clusters.
+parallelly::availableCores() 
+# Also:
+availableWorkers()
+nbrOfWorkers()
+
 plan(multisession, workers = 3)
 
 info <- future_lapply(seq_len(nbrOfWorkers()), function(idx) {

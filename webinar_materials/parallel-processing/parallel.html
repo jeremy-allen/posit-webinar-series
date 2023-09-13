@@ -8,7 +8,7 @@
 <link href="parallel_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="parallel_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="parallel_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.339">
+  <meta name="generator" content="quarto-1.4.346">
 
   <title>parallel</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -583,7 +583,8 @@
 <div class="fragment">
 <ul>
 <li><code>furrr</code> - apply <code>purrr</code> functions in parallel</li>
-<li><code>doParallel</code>, baackend for <code>foreach</code></li>
+<li><code>parallelly</code> - functions that enhance <code>base::parallel</code></li>
+<li><code>doParallel</code>, backend for <code>foreach</code></li>
 <li><code>doSnow</code>, <code>doMPI</code>, <code>doFuture</code></li>
 <li><code>future</code> - concurrent and asynchronous evaluation of code</li>
 <li>In HPCs - <code>batchtools</code> and <code>clustermq</code> are very mature</li>
@@ -694,14 +695,22 @@
 <section class="slide level2">
 <h2>future - Parallelize on local machine</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(future.apply)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">plan</span>(multisession, <span class="at">workers =</span> <span class="dv">3</span>)</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(future)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(future.apply)</span>
 <span id="cb3-3"><a href="#cb3-3"></a></span>
-<span id="cb3-4"><a href="#cb3-4"></a>info <span class="ot">&lt;-</span> <span class="fu">future_lapply</span>(<span class="fu">seq_len</span>(<span class="fu">nbrOfWorkers</span>()), <span class="cf">function</span>(idx) {</span>
-<span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">data.frame</span>(<span class="at">idx =</span> idx, <span class="at">hostname =</span> <span class="fu">Sys.info</span>()[[<span class="st">"nodename"</span>]], <span class="at">pid =</span> <span class="fu">Sys.getpid</span>())</span>
-<span id="cb3-6"><a href="#cb3-6"></a>})</span>
-<span id="cb3-7"><a href="#cb3-7"></a>info <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, info)</span>
-<span id="cb3-8"><a href="#cb3-8"></a>info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># gives the number of CPU cores available to your R process as given by R options and environment variables, including those set by job schedulers on high-performance compute (HPC) clusters.</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>parallelly<span class="sc">::</span><span class="fu">availableCores</span>() </span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co"># Also:</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="fu">availableWorkers</span>()</span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="fu">nbrOfWorkers</span>()</span>
+<span id="cb3-9"><a href="#cb3-9"></a></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="fu">plan</span>(multisession, <span class="at">workers =</span> <span class="dv">3</span>)</span>
+<span id="cb3-11"><a href="#cb3-11"></a></span>
+<span id="cb3-12"><a href="#cb3-12"></a>info <span class="ot">&lt;-</span> <span class="fu">future_lapply</span>(<span class="fu">seq_len</span>(<span class="fu">nbrOfWorkers</span>()), <span class="cf">function</span>(idx) {</span>
+<span id="cb3-13"><a href="#cb3-13"></a>  <span class="fu">data.frame</span>(<span class="at">idx =</span> idx, <span class="at">hostname =</span> <span class="fu">Sys.info</span>()[[<span class="st">"nodename"</span>]], <span class="at">pid =</span> <span class="fu">Sys.getpid</span>())</span>
+<span id="cb3-14"><a href="#cb3-14"></a>})</span>
+<span id="cb3-15"><a href="#cb3-15"></a>info <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, info)</span>
+<span id="cb3-16"><a href="#cb3-16"></a>info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section class="slide level2">
