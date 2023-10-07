@@ -1,5 +1,5 @@
 ---
-title: "Road Less Traveled `r emo::ji('national park')` `r emo::ji('person mountain biking')`"
+title: "Road Less Traveled `r emoji('canoe')`"
 subtitle: "Productive RStudio IDE features you may not know"
 format: html
 editor_options: 
@@ -14,10 +14,7 @@ bibliography: references.bib
 #| warning: false
 #| error: false
 
-# to install the emo package, first install the devtools package,
-# then install emo from github with: devtools::install_github("hadley/emo")
-
-library(emo)
+library(emoji)
 library(tidyverse)
 
 ```
@@ -30,13 +27,13 @@ I am on a MacBook so `cmd` = command key. If you are on a Windows machine, use `
 
 <br>
 
-## `r emo::ji("red heart")` Jeremy's personal favorites
+## `r emoji("red heart")` Jeremy's personal favorites
 
 ### Output to where?
 
 I like it to go to the console
 
--   `r emo::ji("gear")` -\> *Chunk Output in Console*
+-   `r emoji("gear")` -\> *Chunk Output in Console*
 
 ### Console is where? 
 
@@ -47,7 +44,7 @@ I move my console to the top right quadrant: *Tools*-\>*Global Options*-\>*Pane 
 -   F2 or `cmd+click` the function name to expose function body\
 -   Don't forget to select a method in the drop down if you can
 -   F1 the function name for help
--   My favs because I learn best by seeing what others are already doing `r emo::ji("brain")`
+-   My favs because I learn best by seeing what others are already doing `r emoji("brain")`
 
 ```{r}
 #| echo: true
@@ -67,7 +64,7 @@ dat <- tibble::as_tibble(diamonds)
 
 <br>
 
-## `r emo::ji("compass")` Getting around
+## `r emoji("compass")` Getting around
 
 ### Command Palette
 
@@ -93,11 +90,11 @@ It's not unknown, but it's so productive I cannot not mention it
 ### It's ok to cheat - I don't believe they've been here all along
 
 -   *Help* -\> *Cheat Sheets*
--   What? There's one for the IDE? `r emo::ji("face with monocle")`
+-   What? There's one for the IDE? `r emoji("face with monocle")`
 
 <br>
 
-## `r emo::ji("computer")` Code mode
+## `r emoji("laptop")` Code mode
 
 ### Editor fun
 
@@ -155,7 +152,7 @@ shinyapp
 
 <br>
 
-## `r emo::ji("hospital")` Search and Rescue
+## `r emoji("hospital")` Search and Rescue
 
 -   find and replace across files
 -   `shift+cmd+f` and search for good_pets, then replace
@@ -163,7 +160,7 @@ shinyapp
 
 <br>
 
-## `r emo::ji("chains")` Connections
+## `r emoji("chains")` Connections
 
 ### The IDE installs Posit's pro drivers for you
 
@@ -172,11 +169,11 @@ In the Connections pane
 -   click *New Connection*
 -   chose a driver
 -   the IDE installs it before helping you start the connection
--   if the install fails, update packages and try again `r emo::ji("plug")`
+-   if the install fails, update packages and try again `r emoji("plug")`
 
 <br>
 
-## `r emo::ji("beetle")` Bugs
+## `r emoji("beetle")` Bugs
 
 ### Breakpoints and browser()
 
@@ -188,7 +185,7 @@ Let's jump over to the `my_func.R` file for this piece
 
 <br>
 
-## `r emo::ji("button")` Visual editor
+## `r emoji("COOL button")` Visual editor
 
 -   normal doc styling features
 
@@ -200,9 +197,9 @@ Let's jump over to the `my_func.R` file for this piece
 
 <br>
 
-## `r emo::ji("package")` Advanced
+## `r emoji("package")` Advanced
 
-Require writing packages
+Requires writing packages
 
 ### Addins
 
