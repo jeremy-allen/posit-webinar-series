@@ -5,7 +5,7 @@ account: jeremy.allen
 server: colorado.posit.co
 hostUrl: https://colorado.posit.co/rsc/__api__
 appId: 17882
-bundleId: 79666
+bundleId: 79692
 url: https://colorado.posit.co/rsc/parallel-processing/
 version: 1
 asMultiple: FALSE
