@@ -1,6 +1,0 @@
----
-title: "7 Things to Know about Git and RStudio"
-format: html
----
-
- 
