@@ -5,11 +5,10 @@ account: jeremy.allen
 server: colorado.posit.co
 hostUrl: https://colorado.posit.co/rsc/__api__
 appId: 15852
-bundleId: 74396
+bundleId: 80855
 url: https://colorado.posit.co/rsc/the-unknown/
-when: 1684261646.59291
-lastSyncTime: 1684261646.59292
-quarto_version: 1.3.353
+quarto_version: 1.4.346
 quarto_engines: knitr
 asMultiple: FALSE
 asStatic: FALSE
+ignoredFiles: _quarto.yml
