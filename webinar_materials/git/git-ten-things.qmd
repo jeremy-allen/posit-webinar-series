@@ -1,0 +1,23 @@
+---
+title: "10 Things to Know about Git and RStudio"
+format: html
+---
+
+## What is Git?
+
+1. Git is a Version Control System
+2. Git is a Command Line Tool
+
+## Reduce Risk with Git and RStudio
+
+1. Track changes to your code
+2. Revert to previous versions
+3. Separate production and development code
+4. **Go epi**: understand more about your knowledge creation process by producing and tracking metadata about your code
+
+## Collaborate with Git, RStudio, and GitHub/GitLab/Bitbucket
+
+1. Share code
+2. Collaborate on projects
+3. Adopt norms for participation
+4. Control contribution procedures
