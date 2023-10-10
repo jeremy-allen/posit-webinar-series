@@ -1,23 +1,163 @@
 ---
 title: "10 Things to Know about Git and RStudio"
-format: html
+format:
+  revealjs:
+    controls: true
+    overview: true
+    theme: [styles.scss]
 ---
+
+##
+
+::: {.column-page}
+
+:::{layout="[20,20,40]"}
+
+![](images/illustration.jpg){width=30%}
+
+![](images/photo.jpg){width=30%}
+
+![](images/dataviz.jpg){width=35%}
+:::
+:::
+
 
 ## What is Git?
 
-1. Git is a Version Control System
-2. Git is a Command Line Tool
+:::{.incremental}
+1. Git is a Command Line Tool
+2. Git is a Version Control System
+:::
 
 ## Reduce Risk with Git and RStudio
 
-1. Track changes to your code
-2. Revert to previous versions
-3. Separate production and development code
-4. **Go epi**: understand more about your knowledge creation process by producing and tracking metadata about your code
+:::{.incremental}
+3. Track changes to your code
+4. Revert to previous versions
+5. Separate production and development code
+6. **Go epi**: understand more about your knowledge creation process by producing and tracking metadata about your code
+:::
 
 ## Collaborate with Git, RStudio, and GitHub/GitLab/Bitbucket
 
-1. Share code
-2. Collaborate on projects
-3. Adopt norms for participation
-4. Control contribution procedures
+:::{.incremental}
+7. Share code
+8. Collaborate on projects
+9. Adopt norms for participation
+10. Control contribution procedures
+:::
+
+## Bonus
+
+:::{.incremental}
+11. GitHub is to git as RStudio is to R
+:::
+
+## These things are a lot like what? {.smaller}
+
+:::{.columns}
+::::{.column width="45%"}
+**Reduce Risk with Git and RStudio**
+
+3. Track changes
+4. Revert to previous versions
+5. Separate concerns
+6. Document your process
+::::
+::::{.column width="45%"}
+**Collaborate with Git, RStudio, and GitHub/GitLab/Bitbucket**
+
+7. Share resources
+8. Collaborate
+9. Adopt conventions
+10. Control procedures
+::::
+:::
+
+## Part of the scientific process! {.smaller}
+
+Science is:
+
+:::{.fragment}
+Creating new knowledge...
+:::
+
+:::{.fragment}
+...in a regimented, rigorous, and reproducible way...
+:::
+
+<br>
+
+:::{.fragment}
+The lab notebook:
+
+"The laboratory notebook, intended to receive the account of the results of experiments, should always be at hand, as should also pen and ink. All the events worthy of record should be entered at the time the experiments are made..."^[Michael Faraday [1827], quoted by Lorraine Daston and Peter Galison in *Objectivity* (2007, pp 245).]
+
+:::
+
+##
+
+::: {.column-page}
+
+:::{layout="[20,20,40]"}
+
+![Illustration](images/illustration.jpg){width=30%}
+
+![Photo](images/photo.jpg){width=30%}
+
+![Dataviz](images/dataviz.jpg){width=35%}
+:::
+:::
+
+##
+
+::: {.column-page}
+
+:::{layout="[20,20,40]"}
+
+![By hand: true-to-nature](images/illustration.jpg){width=30%}
+
+![By machine: mechanical objectivity](images/photo.jpg){width=30%}
+
+[![By data: trained judgement](images/dataviz.jpg){width=35%}](https://www.pbs.org/newshour/science/katie-bouman-hardly-knew-what-a-black-hole-was-her-algorithm-helped-us-see-one)
+
+:::
+
+:::{.my-footnote}
+Lorraine Daston and Peter Galison, Objectivity, Illustrated Edition (New York, NY: Zone Books, 2010).
+:::
+
+:::
+
+## Katie Bouman - Trained Judgment{.smaller}
+
+"The process of imaging is taking the incomplete information that we get from a couple of places on our virtual telescope, and trying to fill in all the missing information to get the picture an actual Earth-sized telescope would have produced."^[Katie Bouman explaining how she used data from many telescopes to create the first image of a black hole.]
+
+<br>
+
+Photograph enough snowflakes and you learn you cannot capture all the variability. You will have to make judgments about what you are observing.
+
+Much training and practice precedes the kind of trained judgement Katie used to make the first image of a black hole.
+
+# Git and RStudio projects
+
+:::{.fragment}
+Faraday's lab notebooks are an example of tools used to train scientists and add rigor to the scientific process.
+:::
+
+:::{.fragment}
+Git and RStudio projects can be used as a kind of lab notebook.
+:::
+
+# Let's practice {.smaller}
+
+- changelists
+- diffs
+- staging and committing
+- history
+- branching
+- separating concerns: main, test, feature branches
+- using the terminal tab for git functions not built into the UI
+  - reverts
+  - merges
+
