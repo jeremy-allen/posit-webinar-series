@@ -151,7 +151,6 @@ Git and RStudio projects can be used as a kind of lab notebook.
 
 # Let's practice {.smaller}
 
-- changelists
 - diffs
 - staging and committing
 - history
