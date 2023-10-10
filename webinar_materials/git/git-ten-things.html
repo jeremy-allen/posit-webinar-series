@@ -8,7 +8,7 @@
 <link href="git-ten-things_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="git-ten-things_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="git-ten-things_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.346">
+  <meta name="generator" content="quarto-1.4.339">
 
   <title>10 Things to Know about Git and RStudio</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -524,6 +524,17 @@
 </ul></li>
 </ul>
 </section>
+<section id="main-test-and-feature-branches" class="slide level2">
+<h2>Main, test, and feature branches</h2>
+<ul>
+<li>Maintain two long running branches – <strong>main</strong> is the prod version, <strong>test</strong> is a long-running pre-prod version</li>
+<li>Code can only be promoted to main via a merge from test</li>
+<li>New functionality is developed in short-lived feature branches after testing and approval</li>
+</ul>
+<div class="my-footnote">
+<p><a href="https://do4ds.com/chapters/sec1/1-5-deployments.html#version-control-implements-code-promotion">DevOps for Data Science</a> by Alex K Gold</p>
+</div>
+</section>
 <section id="usethis" class="slide level2 smaller">
 <h2>usethis</h2>
 <p><code>usethis</code>: for some Git and GitHub tasks that arise when managing R projects and packages</p>
@@ -560,7 +571,10 @@
 </section></section>
 <section id="thank-you" class="title-slide slide level1 center">
 <h1>Thank You!</h1>
-<p><a href="https://happygitwithr.com/">Happy Git and GitHub for the useR</a></p>
+<ul>
+<li><a href="https://happygitwithr.com/">Happy Git and GitHub for the useR</a> by Jenny Bryan</li>
+<li><a href="https://do4ds.com/chapters/sec1/1-5-deployments.html#version-control-implements-code-promotion">DevOps for Data Science</a> by Alex K Gold</li>
+</ul>
 <div class="footer footer-default">
 
 </div>

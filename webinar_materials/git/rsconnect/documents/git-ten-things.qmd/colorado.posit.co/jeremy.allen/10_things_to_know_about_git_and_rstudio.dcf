@@ -1,0 +1,14 @@
+name: 10_things_to_know_about_git_and_rstudio
+title: 10 Things to Know About Git and RStudio
+username: jeremy.allen
+account: jeremy.allen
+server: colorado.posit.co
+hostUrl: https://colorado.posit.co/rsc/__api__
+appId: 18199
+bundleId: 80981
+url: https://colorado.posit.co/rsc/content/5a91ca57-b5b8-4f36-bf8d-39a3b762fc82/
+version: 1
+quarto_version: 1.4.339
+quarto_engines: knitr
+asMultiple: FALSE
+asStatic: FALSE

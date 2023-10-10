@@ -4,7 +4,9 @@ format:
   revealjs:
     controls: true
     overview: true
-    theme: [styles.scss]
+    theme: styles.scss
+resource_files:
+- styles.scss
 ---
 
 ```{r}
@@ -163,6 +165,16 @@ Git and RStudio projects can be used as a kind of lab notebook.
 - using the terminal tab for git functions not built into the UI
   - reverts
   - merges
+  
+## Main, test, and feature branches
+
+- Maintain two long running branches – **main** is the prod version, **test** is a long-running pre-prod version
+- Code can only be promoted to main via a merge from test
+- New functionality is developed in short-lived feature branches after testing and approval
+
+:::{.my-footnote}
+[DevOps for Data Science](https://do4ds.com/chapters/sec1/1-5-deployments.html#version-control-implements-code-promotion) by Alex K Gold
+:::
 
 ## usethis {.smaller}
 
@@ -206,4 +218,5 @@ If you still need to use .Renviron method, usethis::edit_r_environ() opens that 
 
 # Thank You!
 
-[Happy Git and GitHub for the useR](https://happygitwithr.com/)
+- [Happy Git and GitHub for the useR](https://happygitwithr.com/) by Jenny Bryan
+- [DevOps for Data Science](https://do4ds.com/chapters/sec1/1-5-deployments.html#version-control-implements-code-promotion) by Alex K Gold
