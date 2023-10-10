@@ -499,6 +499,7 @@
 <p>Photograph enough snowflakes and you learn you cannot capture all the variability. You will have to make judgments about what you are observing.</p>
 <p>Much training and practice precedes the kind of trained judgement Katie used to make the first image of a black hole.</p>
 <aside><ol class="aside-footnotes"><li id="fn2"><p>Katie Bouman explaining how she used data from many telescopes to create the first image of a black hole.</p></li></ol></aside></section>
+<section>
 <section id="git-and-rstudio-projects" class="title-slide slide level1 center">
 <h1>Git and RStudio projects</h1>
 <div class="fragment">
@@ -508,9 +509,8 @@
 <p>Git and RStudio projects can be used as a kind of lab notebook.</p>
 </div>
 </section>
-
-<section id="lets-practice" class="title-slide slide level1 smaller center">
-<h1>Let’s practice</h1>
+<section id="lets-practice" class="slide level2 smaller">
+<h2>Let’s practice</h2>
 <ul>
 <li>diffs</li>
 <li>staging and committing</li>
@@ -523,6 +523,44 @@
 <li>merges</li>
 </ul></li>
 </ul>
+</section>
+<section id="usethis" class="slide level2 smaller">
+<h2>usethis</h2>
+<p><code>usethis</code>: for some Git and GitHub tasks that arise when managing R projects and packages</p>
+<p>Managing Git(Hub) credentials, we recommend:</p>
+<div>
+<ul>
+<li class="fragment">Adopt HTTPS as your Git transport protocol</li>
+<li class="fragment">Turn on two-factor authentication for your GitHub account</li>
+<li class="fragment">Use a personal access token (PAT) for all Git remote operations from the command line or from R</li>
+<li class="fragment">Allow tools to store and retrieve your credentials from the Git credential store</li>
+<li class="fragment">If you have previously set your GitHub PAT in your <code>.Renviron</code> file, <strong>stop doing that</strong></li>
+</ul>
+</div>
+</section>
+<section id="setup-a-github-credential" class="slide level2 smaller">
+<h2>Setup a GitHub credential</h2>
+<p>The R function: <code>usethis::create_github_token()</code></p>
+<div class="fragment">
+<p>The good reason: The advantage of <code>create_github_token()</code> is that we have pre-selected some recommended scopes</p>
+</div>
+<div class="fragment">
+<p>The R function: <code>gitcreds::gitcreds_set()</code></p>
+</div>
+<div class="fragment">
+<p>The good reason: easy as 🍰, more secure, available for other packages that need to discover your PAT</p>
+</div>
+<p><br></p>
+<div class="fragment">
+<p>As of v2.0.0, usethis should fully support GitHub Enterprise deployments. If you find this is not true, please open an issue</p>
+</div>
+<div class="fragment">
+<p>If you still need to use .Renviron method, usethis::edit_r_environ() opens that file for editing.</p>
+</div>
+</section></section>
+<section id="thank-you" class="title-slide slide level1 center">
+<h1>Thank You!</h1>
+<p><a href="https://happygitwithr.com/">Happy Git and GitHub for the useR</a></p>
 <div class="footer footer-default">
 
 </div>
@@ -739,6 +777,44 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
