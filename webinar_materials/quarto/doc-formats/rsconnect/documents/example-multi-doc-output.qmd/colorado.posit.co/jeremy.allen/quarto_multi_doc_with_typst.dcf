@@ -1,0 +1,14 @@
+name: quarto_multi_doc_with_typst
+title: Quarto Multi Doc With Typst
+username: jeremy.allen
+account: jeremy.allen
+server: colorado.posit.co
+hostUrl: https://colorado.posit.co/rsc/__api__
+appId: 18506
+bundleId: 82879
+url: https://colorado.posit.co/rsc/content/699c3099-cad6-4288-a253-498d531800e1/
+version: 1
+quarto_version: 1.4.455
+quarto_engines: knitr
+asMultiple: FALSE
+asStatic: FALSE
